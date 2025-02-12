@@ -1,0 +1,23 @@
+[
+    {
+        "_id": 1,
+        "name": "Kézi 6 fokozatú",
+        "wheelDrive":" Elsőkerék hajtás"
+    },
+    {
+        "_id": 2,
+        "name": "DSG váltó 7 fokozatú",
+        "wheelDrive":" Elsőkerék hajtás"
+    },
+    {
+        "_id": 3,
+        "name": "DSG váltó 6 fokozatú",
+        "wheelDrive":" Elsőkerék hajtás"
+    },
+    {
+        "_id": 4,
+        "name": "DSG váltó 7 fokozatú",
+        "wheelDrive":"Összkerék hajtás"
+    }
+]
+

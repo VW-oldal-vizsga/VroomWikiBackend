@@ -1,0 +1,58 @@
+[
+    {
+        "name":"1.5 TSI",
+        "horsepower":115,
+        "fuelConsumption": 6,
+        "Co2Emission":136,
+        "fuelType":"Benzin"
+    },
+    {
+        "name":"1.5 TSI",
+        "horsepower":150,
+        "fuelConsumption": 6.1,
+        "Co2Emission":140,
+        "fuelType":"Benzin"
+    },
+    {
+        "name":"1.5 eTSI",
+        "horsepower":150,
+        "fuelConsumption": 5.4,
+        "Co2Emission":124,
+        "fuelType":"Benzin(mild) Hybrid"
+    },
+    {
+        "name":"2.0 TDI",
+        "horsepower":150,
+        "fuelConsumption": 4.8,
+        "Co2Emission":128,
+        "fuelType":"Gázolaj"
+    },
+    {
+        "name":"1.5 TSI Plug-In-Hybrid",
+        "horsepower":150,
+        "fuelConsumption": 0.3,
+        "Co2Emission":6,
+        "fuelType":"Kombinált: benzin és elektromotor"
+    },
+    {
+        "name":"2.0 TSI",
+        "horsepower":265,
+        "fuelConsumption": 7.5,
+        "Co2Emission":170,
+        "fuelType":"Benzin"
+    },
+    {
+        "name":"2.0 TSI",
+        "horsepower":300,
+        "fuelConsumption": 7.9,
+        "Co2Emission":180,
+        "fuelType":"Benzin"
+    },
+    {
+        "name":"2.0 TSI",
+        "horsepower":333,
+        "fuelConsumption": 8.5,
+        "Co2Emission":192,
+        "fuelType":"Benzin"
+    }
+]

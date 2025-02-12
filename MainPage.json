@@ -1,0 +1,14 @@
+[
+    {
+        "_id": 1,
+        "description": "A Volkswagen, rövidítve VW , egy német autómárka, amelyet 1937-ben alapították a Német Munkásfront (Deutsche Arbeitsfront) felkérésére, azzal a céllal, hogy beindítsa a tömeges motorizációt az akkori Harmadik Birodalomban. Székhelye az alsó-szászországi Wolfsburg városában található. A Volkswagen az ugyanilyen nevű konszern zászlóshajójának számít. A konszern 2016-ban és 2017-ben a világ legnagyobb autógyártójának számított",
+        "founded": 1937,
+        "headquarters": "Wolfsburg",
+        "factories": "Bratislava, Wolfsburg, Dresten, Emden",
+        "chairman": "Thomas Schäfer",
+        "owner": "Volkswagen",
+        "products": "",
+        "employees": 0,
+        "profit": 322284000000
+    }
+]

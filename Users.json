@@ -1,0 +1,23 @@
+[
+    {
+        "_id":1,
+        "email":"admin@admin.com",
+        "password":"admin01",
+        "username":"admin",
+        "createdAt":"2025-02-11"
+    },
+    {
+        "_id":2,
+        "email":"nagybela01@gmail.com",
+        "password":"bela01",
+        "username":"nbela007",
+        "createdAt":"2025-02-12"
+    },
+    {
+        "_id":3,
+        "email":"kissjanos@gmail.com",
+        "password":"janos1",
+        "username":"kjanos",
+        "createdAt":"2025-02-11"
+    }
+]
