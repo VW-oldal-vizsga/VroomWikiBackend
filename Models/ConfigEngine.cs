@@ -9,6 +9,7 @@ namespace Models
 {
     public class ConfigEngine
     {
+        [Key]
         public required int Id { get; set; }
 
         [StringLength(20)]

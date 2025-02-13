@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using Newtonsoft.Json;
 
@@ -39,17 +40,71 @@ namespace WebApplication1.Data
 
 
             var configEngines = LoadConfigEnginesFromJson();
+            var configColor = LoadConfigColorFromJson();
+            var configTransType = LoadConfigTransTypeFromJson();
+            var mainPage = LoadMainPageFromJson();
+            var pastModel = LoadPastModelsFromJson();
+            var sales = LoadSalesFromJson();
+            var users = LoadUsersFromJson();
 
             foreach (var engine in configEngines)
             {
                 if (engine.Id == 0)
                 {
-                    engine.Id = GetUniqueNegativeId();
+                    engine.Id = GetUniqueId();
+                }
+            }
+            foreach (var color in configColor)
+            {
+                if (color.Id == 0)
+                {
+                    color.Id = GetUniqueId();
+                }
+            }
+            foreach (var transType in configTransType)
+            {
+                if (transType.Id == 0)
+                {
+                    transType.Id = GetUniqueId();
+                }
+            }
+            foreach (var mainP in mainPage)
+            {
+                if (mainP.Id == 0)
+                {
+                    mainP.Id = GetUniqueId();
+                }
+            }
+            foreach (var pastM in pastModel)
+            {
+                if (pastM.Id == 0)
+                {
+                    pastM.Id = GetUniqueId();
+                }
+            }
+            foreach (var sale in sales)
+            {
+                if (sale.Id == 0)
+                {
+                    sale.Id = GetUniqueId();
+                }
+            }
+            foreach (var user in users)
+            {
+                if (user.Id == 0)
+                {
+                    user.Id = GetUniqueId();
                 }
             }
 
 
             modelBuilder.Entity<ConfigEngine>().HasData(configEngines);
+            modelBuilder.Entity<ConfigColor>().HasData(configColor);
+            modelBuilder.Entity<ConfigTransmissionType>().HasData(configTransType);
+            modelBuilder.Entity<MainPage>().HasData(mainPage);
+            modelBuilder.Entity<PastModel>().HasData(pastModel);
+            modelBuilder.Entity<Sale>().HasData(sales);
+            modelBuilder.Entity<User>().HasData(users);
 
         }
 
@@ -59,11 +114,58 @@ namespace WebApplication1.Data
             var json = File.ReadAllText("ConfigEngine.json");
             return JsonConvert.DeserializeObject<List<ConfigEngine>>(json);
         }
-
-        private int GetUniqueNegativeId()
+        private List<ConfigColor> LoadConfigColorFromJson()
         {
-            // Generate unique negative Ids (this is a simple example, you might want a more robust solution)
-            return -Math.Abs(Guid.NewGuid().GetHashCode());
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("ConfigColor.json");
+            return JsonConvert.DeserializeObject<List<ConfigColor>>(json);
+        }
+        private List<ConfigTransmissionType> LoadConfigTransTypeFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("ConfigTransmissionTypes.json");
+            return JsonConvert.DeserializeObject<List<ConfigTransmissionType>>(json);
+        }
+        private List<MainPage> LoadMainPageFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("MainPage.json");
+            return JsonConvert.DeserializeObject<List<MainPage>>(json);
+        }
+        private List<PastModel> LoadPastModelsFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("PastModels.json");
+            return JsonConvert.DeserializeObject<List<PastModel>>(json);
+        }
+        private List<Sale> LoadSalesFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("Sales.json");
+            return JsonConvert.DeserializeObject<List<Sale>>(json);
+        }
+        private List<User> LoadUsersFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("Users.json");
+            return JsonConvert.DeserializeObject<List<User>>(json);
+        }
+
+
+
+        private static int _currentId = 1; // Kezdőérték 1
+        private const int MaxId = 1000;    // Maximális érték (itt például 1000)
+
+        private int GetUniqueId()
+        {
+            if (_currentId > MaxId)
+            {
+                // Ha elérjük a maximális értéket, kezelhetjük ezt valamilyen módon
+                // Például, visszaállíthatjuk 1-re vagy más logikát alkalmazhatunk
+                _currentId = 1; // Visszaállítjuk 1-re, ha elérjük a maximális ID-t
+            }
+
+            return _currentId++;
         }
     }
 }

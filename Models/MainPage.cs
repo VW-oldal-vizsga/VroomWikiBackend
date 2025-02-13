@@ -9,6 +9,7 @@ namespace Models
 {
     public class MainPage
     {
+        [Key]
         public required int Id { get; set; }
 
         [StringLength(250)]
@@ -34,6 +35,6 @@ namespace Models
         [StringLength(300)]
         public string? History { get; set; }
 
-        public int? Profit { get; set; }
+        public string? Profit { get; set; }
     }
 }

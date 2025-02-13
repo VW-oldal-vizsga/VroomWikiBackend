@@ -10,6 +10,7 @@ namespace Models
 {
     public class Configuration
     {
+        [Key]
         public required int Id { get; set; }
         public required User User_id { get; set; }
 

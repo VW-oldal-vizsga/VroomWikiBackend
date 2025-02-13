@@ -9,6 +9,7 @@ namespace Models
 {
     public class PastModel 
     {
+        [Key]
         public required int Id { get; set; }
 
         [StringLength(30)]
@@ -22,7 +23,7 @@ namespace Models
         [StringLength(30)]
         public required string? Engine { get; set; }
 
-        public required int? Horsepower { get; set; }
+        public required string? Horsepower { get; set; }
         public required int? ReleaseDate { get; set; }
     }
 }
