@@ -154,7 +154,7 @@ namespace WebApplication1.Data
 
 
         private static int _currentId = 1; // Kezdőérték 1
-        private const int MaxId = 1000;    // Maximális érték (itt például 1000)
+        private const int MaxId = 10;    // Maximális érték (itt például 1000)
 
         private int GetUniqueId()
         {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Transactions;
 using WebApplication1.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,24 +16,15 @@ namespace WebApplication1.Controllers
         {
             _dbContext = dbContext;
         }
+
+        // COLORS
+
         // GET: api/<ConfiguratorController>
         [HttpGet("colors")]
         public IActionResult GetColors()
         {
             var colors = _dbContext.Color.ToList();
             return Ok(colors);
-        }
-        [HttpGet("engines")]
-        public IActionResult GetEngines()
-        {
-            var engines = _dbContext.Engine.ToList();
-            return Ok(engines);
-        }
-        [HttpGet("transmissions")]
-        public IActionResult GetTransmissionTypes()
-        {
-            var transTypes = _dbContext.TransmissionType.ToList();
-            return Ok(transTypes);
         }
 
         // GET api/<ConfiguratorController>/5
@@ -51,6 +41,15 @@ namespace WebApplication1.Controllers
             return Ok(color);
         }
 
+        // ENGINES
+
+        [HttpGet("engines")]
+        public IActionResult GetEngines()
+        {
+            var engines = _dbContext.Engine.ToList();
+            return Ok(engines);
+        }
+
         // GET api/<ConfiguratorController>/5
         [HttpGet("engines/{id}")]
         public IActionResult GetEngineById([FromRoute] int id)
@@ -63,6 +62,15 @@ namespace WebApplication1.Controllers
             }
 
             return Ok(engine);
+        }
+
+        // TRANSMISSION_TYPES
+
+        [HttpGet("transmissions")]
+        public IActionResult GetTransmissionTypes()
+        {
+            var transTypes = _dbContext.TransmissionType.ToList();
+            return Ok(transTypes);
         }
 
         [HttpGet("transmission/{id}")]
