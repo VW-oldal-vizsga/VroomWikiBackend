@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Transactions;
 using WebApplication1.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,6 +10,7 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class ConfiguratorController : ControllerBase
     {
+        private const string id = "{id}";
         private readonly AppDbContext _dbContext;
 
         public ConfiguratorController(AppDbContext dbContext)
@@ -16,18 +18,64 @@ namespace WebApplication1.Controllers
             _dbContext = dbContext;
         }
         // GET: api/<ConfiguratorController>
-        [HttpGet]
+        [HttpGet("colors")]
         public IActionResult GetColors()
         {
             var colors = _dbContext.Color.ToList();
             return Ok(colors);
         }
+        [HttpGet("engines")]
+        public IActionResult GetEngines()
+        {
+            var engines = _dbContext.Engine.ToList();
+            return Ok(engines);
+        }
+        [HttpGet("transmissions")]
+        public IActionResult GetTransmissionTypes()
+        {
+            var transTypes = _dbContext.TransmissionType.ToList();
+            return Ok(transTypes);
+        }
 
         // GET api/<ConfiguratorController>/5
-        [HttpGet("{id}")]
-        public IActionResult GetColorId([FromRoute])
+        [HttpGet("colors/{id}")]
+        public IActionResult GetColorById([FromRoute] int id)
         {
-            return "value";
+            var color=_dbContext.Color.Find(id);
+
+            if (color==null)
+            {
+                return NotFound();   
+            }
+
+            return Ok(color);
+        }
+
+        // GET api/<ConfiguratorController>/5
+        [HttpGet("engines/{id}")]
+        public IActionResult GetEngineById([FromRoute] int id)
+        {
+            var engine = _dbContext.Engine.Find(id);
+
+            if (engine == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(engine);
+        }
+
+        [HttpGet("transmission/{id}")]
+        public IActionResult GetTransmissionTypeById([FromRoute] int id)
+        {
+            var transType = _dbContext.TransmissionType.Find(id);
+
+            if (transType == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(transType);
         }
 
         // POST api/<ConfiguratorController>

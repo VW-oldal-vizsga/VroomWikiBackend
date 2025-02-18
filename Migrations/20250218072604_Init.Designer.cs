@@ -11,7 +11,7 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250213111807_Init")]
+    [Migration("20250218072604_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace WebApplication1.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Models.ConfigColor", b =>
