@@ -48,7 +48,8 @@ namespace VroomWiki.Controllers
         [HttpGet("engines")]
         public IActionResult GetEngines()
         {
-            var engines = _dbContext.Engine.ToList();
+            var engines = _dbContext.Engine.ToList()
+                .Select(e => e.ToConfigEngineDTO());
             return Ok(engines);
         }
 
@@ -63,7 +64,7 @@ namespace VroomWiki.Controllers
                 return NotFound();
             }
 
-            return Ok(engine);
+            return Ok(engine.ToConfigEngineDTO());
         }
 
         // TRANSMISSION_TYPES
