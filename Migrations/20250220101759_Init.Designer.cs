@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Data;
+using VroomWiki.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace VroomWiki.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250218081031_Init")]
+    [Migration("20250220101759_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -377,7 +377,7 @@ namespace WebApplication1.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("PastCar");
+                    b.ToTable("PastModel");
 
                     b.HasData(
                         new

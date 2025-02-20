@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace WebApplication1.Migrations
+namespace VroomWiki.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration
@@ -84,7 +84,7 @@ namespace WebApplication1.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "PastCar",
+                name: "PastModel",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -103,7 +103,7 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PastCar", x => x.Id);
+                    table.PrimaryKey("PK_PastModel", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -246,7 +246,7 @@ namespace WebApplication1.Migrations
                 values: new object[] { 5, "Thomas Schäfer", "A Volkswagen, rövidítve VW , egy német autómárka, amelyet 1937-ben alapították a Német Munkásfront (Deutsche Arbeitsfront) felkérésére, azzal a céllal, hogy beindítsa a tömeges motorizációt az akkori Harmadik Birodalomban. Székhelye az alsó-szászországi Wolfsburg városában található. A Volkswagen az ugyanilyen nevű konszern zászlóshajójának számít. A konszern 2016-ban és 2017-ben a világ legnagyobb autógyártójának számított", 0, "Bratislava, Wolfsburg, Dresten, Emden", 1937, "Wolfsburg", null, "Volkswagen", "", "322284000000" });
 
             migrationBuilder.InsertData(
-                table: "PastCar",
+                table: "PastModel",
                 columns: new[] { "Id", "Description", "Engine", "Horsepower", "Image", "Name", "ReleaseDate" },
                 values: new object[,]
                 {
@@ -339,8 +339,8 @@ namespace WebApplication1.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PastCar_Name",
-                table: "PastCar",
+                name: "IX_PastModel_Name",
+                table: "PastModel",
                 column: "Name",
                 unique: true);
 
@@ -373,7 +373,7 @@ namespace WebApplication1.Migrations
                 name: "MainPage");
 
             migrationBuilder.DropTable(
-                name: "PastCar");
+                name: "PastModel");
 
             migrationBuilder.DropTable(
                 name: "Sale");

@@ -8,53 +8,49 @@ namespace VroomWiki.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class PastModelsController : ControllerBase
     {
-        
         private readonly AppDbContext _dbContext;
-        public AuthController(AppDbContext dbContext)
+        public PastModelsController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-
-        // GET: api/<AuthController>
-
-
+        // GET: api/<PastModelsController>
         [HttpGet]
-        public IActionResult GetUsers()
+        public IActionResult GetPastModels()
         {
-            var users = _dbContext.User.ToList()
-                .Select(u => u.ToUsersDTO());
-            return Ok(users);
+            var pastModels = _dbContext.PastModel.ToList()
+                .Select(p =>p.ToPastModelsDTO());
+            return Ok(pastModels);
         }
 
-        // GET api/<AuthController>/5
+        // GET api/<PastModelsController>/5
         [HttpGet("{id}")]
-        public IActionResult GetUserById(int id)
+        public IActionResult GetPastModelById(int id)
         {
-            var user = _dbContext.User.Find(id);
+            var pastModel= _dbContext.PastModel.Find(id);
 
-            if (user == null)
+            if (pastModel== null)
             {
                 return NotFound();
             }
 
-            return Ok(user.ToUsersDTO());
+            return Ok(pastModel.ToPastModelsDTO());
         }
 
-        // POST api/<AuthController>
+        // POST api/<PastModelsController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<AuthController>/5
+        // PUT api/<PastModelsController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<AuthController>/5
+        // DELETE api/<PastModelsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

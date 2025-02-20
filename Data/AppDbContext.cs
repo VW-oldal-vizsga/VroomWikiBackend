@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Models;
 using Newtonsoft.Json;
 
-namespace WebApplication1.Data
+namespace VroomWiki.Data
 {
     public class AppDbContext : DbContext
     {
@@ -13,7 +13,7 @@ namespace WebApplication1.Data
         public AppDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         { }
 
-        public DbSet<PastModel> PastCar { get; set; }
+        public DbSet<PastModel> PastModel { get; set; }
         public DbSet<Configuration> Configuration { get; set; }
         public DbSet<MainPage> MainPage { get; set; }
         public DbSet<Sale> Sale { get; set; }

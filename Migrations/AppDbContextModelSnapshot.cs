@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Data;
+using VroomWiki.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace VroomWiki.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -374,7 +374,7 @@ namespace WebApplication1.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("PastCar");
+                    b.ToTable("PastModel");
 
                     b.HasData(
                         new

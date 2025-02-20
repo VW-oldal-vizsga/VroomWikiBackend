@@ -1,0 +1,6 @@
+@VroomWiki_HostAddress = http://localhost:5269
+
+GET {{VroomWiki_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

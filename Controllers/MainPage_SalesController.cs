@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Data;
+using VroomWiki.Data;
+using VroomWiki.Mappers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WebApplication1.Controllers
+namespace VroomWiki.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,14 +20,16 @@ namespace WebApplication1.Controllers
         [HttpGet("mainpage")]
         public IActionResult GetMainPage()
         {
-            var mainPage = _dbContext.MainPage.ToList();
+            var mainPage = _dbContext.MainPage.ToList()
+                .Select(m => m.ToMainPageDTO());
             return Ok(mainPage);
         }
         // GET: api/<MainPage_SalesController>
         [HttpGet("sales")]
-        public IActionResult Get()
+        public IActionResult GetSales()
         {
-            var sales = _dbContext.Sale.ToList();
+            var sales = _dbContext.Sale.ToList()
+                .Select(s => s.ToSalesDTO());
             return Ok(sales);
         }
 
@@ -41,7 +44,7 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
 
-            return Ok(sale);
+            return Ok(sale.ToSalesDTO());
         }
 
         // POST api/<MainPage_SalesController>

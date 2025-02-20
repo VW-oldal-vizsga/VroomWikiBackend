@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Data;
+using VroomWiki.Data;
+using VroomWiki.Mappers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WebApplication1.Controllers
+namespace VroomWiki.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,7 +24,8 @@ namespace WebApplication1.Controllers
         [HttpGet("colors")]
         public IActionResult GetColors()
         {
-            var colors = _dbContext.Color.ToList();
+            var colors = _dbContext.Color.ToList()
+                .Select(c=> c.ToConfigColorDTO());
             return Ok(colors);
         }
 
@@ -38,7 +40,7 @@ namespace WebApplication1.Controllers
                 return NotFound();   
             }
 
-            return Ok(color);
+            return Ok(color.ToConfigColorDTO());
         }
 
         // ENGINES

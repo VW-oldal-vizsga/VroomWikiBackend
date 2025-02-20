@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-using WebApplication1.Data;
+using VroomWiki.Data;
 
-namespace WebApplication1
+namespace VroomWiki
 {
     public class Program
     {
