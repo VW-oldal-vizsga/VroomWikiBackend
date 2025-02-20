@@ -11,7 +11,7 @@ using VroomWiki.Data;
 namespace VroomWiki.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250220101759_Init")]
+    [Migration("20250220115310_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -42,17 +42,17 @@ namespace VroomWiki.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 8,
+                            Id = 9,
                             Name = "Piros"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 10,
                             Name = "Kék"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 1,
                             Name = "Zöld"
                         });
                 });
@@ -90,7 +90,7 @@ namespace VroomWiki.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 10,
+                            Id = 1,
                             Co2Emission = 136f,
                             FuelConsumption = 6f,
                             FuelType = "Benzin",
@@ -99,7 +99,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             Co2Emission = 140f,
                             FuelConsumption = 6.1f,
                             FuelType = "Benzin",
@@ -108,7 +108,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             Co2Emission = 124f,
                             FuelConsumption = 5.4f,
                             FuelType = "Benzin(mild) Hybrid",
@@ -117,7 +117,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             Co2Emission = 128f,
                             FuelConsumption = 4.8f,
                             FuelType = "Gázolaj",
@@ -126,7 +126,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             Co2Emission = 6f,
                             FuelConsumption = 0.3f,
                             FuelType = "Kombinált: benzin és elektromotor",
@@ -135,7 +135,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 6,
                             Co2Emission = 170f,
                             FuelConsumption = 7.5f,
                             FuelType = "Benzin",
@@ -144,7 +144,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 7,
                             Co2Emission = 180f,
                             FuelConsumption = 7.9f,
                             FuelType = "Benzin",
@@ -153,7 +153,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 8,
                             Co2Emission = 192f,
                             FuelConsumption = 8.5f,
                             FuelType = "Benzin",
@@ -186,25 +186,25 @@ namespace VroomWiki.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             Name = "Kézi 6 fokozatú",
                             WheelDrive = " Elsőkerék hajtás"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             Name = "DSG váltó 7 fokozatú",
                             WheelDrive = " Elsőkerék hajtás"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             Name = "DSG váltó 6 fokozatú",
                             WheelDrive = " Elsőkerék hajtás"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             Name = "DSG váltó 7 fokozatú",
                             WheelDrive = "Összkerék hajtás"
                         });
@@ -216,37 +216,30 @@ namespace VroomWiki.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CarpetType")
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
-
                     b.Property<float?>("Co2Emission")
                         .HasColumnType("float");
 
-                    b.Property<int?>("Color_idId")
+                    b.Property<int>("Color_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("ConfigName")
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int?>("Engine_idId")
+                    b.Property<int>("Engine_Id")
                         .HasColumnType("int");
 
-                    b.Property<float?>("FuelConsumption")
-                        .HasColumnType("float");
-
-                    b.Property<string>("FuelType")
+                    b.Property<string>("FuelConsumption")
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
                     b.Property<int?>("Horsepower")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TransmissionTpye_idId")
+                    b.Property<int>("TransmissionTpye_Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("User_idId")
+                    b.Property<int>("User_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("VehicleType")
@@ -269,15 +262,29 @@ namespace VroomWiki.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Color_idId");
-
-                    b.HasIndex("Engine_idId");
-
-                    b.HasIndex("TransmissionTpye_idId");
-
-                    b.HasIndex("User_idId");
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Configuration");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 10,
+                            Co2Emission = 6.2f,
+                            Color_Id = 1,
+                            ConfigName = "Álom",
+                            Engine_Id = 1,
+                            FuelConsumption = "10",
+                            Horsepower = 150,
+                            TransmissionTpye_Id = 0,
+                            User_Id = 2,
+                            VehicleType = "hatchback",
+                            WheelDrive = "első",
+                            WheelType = "19es",
+                            YearProd = 2024,
+                            totalCost = 3000
+                        });
                 });
 
             modelBuilder.Entity("Models.MainPage", b =>
@@ -332,7 +339,7 @@ namespace VroomWiki.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 5,
+                            Id = 6,
                             Chairman = "Thomas Schäfer",
                             Description = "A Volkswagen, rövidítve VW , egy német autómárka, amelyet 1937-ben alapították a Német Munkásfront (Deutsche Arbeitsfront) felkérésére, azzal a céllal, hogy beindítsa a tömeges motorizációt az akkori Harmadik Birodalomban. Székhelye az alsó-szászországi Wolfsburg városában található. A Volkswagen az ugyanilyen nevű konszern zászlóshajójának számít. A konszern 2016-ban és 2017-ben a világ legnagyobb autógyártójának számított",
                             Employees = 0,
@@ -382,7 +389,7 @@ namespace VroomWiki.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 6,
+                            Id = 7,
                             Description = "A Volkswagen UP! az új városi autó koncepciója, amely alapját képezi egy új kisautó-családnak, a Volkswagen Csoport által létrehozott New Small Family-nek (NSF). Ezen autócsalád tagja lesz az új Volkswagen UP!. A jelenlegi tervek szerint a kisautó-család tagjai szalon, szedán, kabrió, kétüléses és mini MPV típusú gépjárművek lesznek. A gyártási folyamatokat Pozsonyban fogják végezni. A kisautócsaládot a 2007-es Frankfurt Motor Show-n az (IAA)-n  leplezték le. Az UP! koncepciót a Volkswagen Csoport vezető tervezője, Walter de'Silva, és a Volkswagen személyautók főtervezője, Klaus Bischoff alkotta meg. Akkumulátoros elektromos változata a Volkswagen e-up!.",
                             Engine = "Otto-motor",
                             Horsepower = "60-115 lóerő",
@@ -392,7 +399,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 8,
                             Description = "Magyarországon az alapmodell az 1,2-es benzines turbómotorral 4,96 millió forintba kerül, 76 ezerrel olcsóbb az azonos motorú Golfnál. Alapmotorral a 0–100 km/h 10,9 másodperc alatt van meg. A végsebessége 190 km/h. Közleményében a Volkswagen hangsúlyozta a modell tágasságát, amelynek alapköve, hogy méretnövekedés hatására 6,7 centivel bővült a lábhely. Az autó elődjeivel ellentétben nem osztozik a karosszériaelemeken a Golffal, hanem teljesen önálló modell. Formáját a januárban bemutatott NCC tanulmány inspirálta. Elődjénél szögletesebb a jármű, külsejét főként a vízszintes élek alkotják, jellegében azonban ugyanazt a hagyományos szedán formát hozza, mint eddig.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "105-200 lóerő",
@@ -402,7 +409,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 9,
                             Description = "A nyolcadik generációs modellt 2014 novemberében vezették be az európai kontinensen, 2015 januárjában pedig az Egyesült Királyságban négyajtós limuzin és kombi kivitelben. Számos fejlett, vezetéstámogató rendszerekkel szerelték fel, beleértve a félautomata parkolórendszert, a gyalogos ütközés-elhárító rendszert és a sürgősségi vezető asszisztenst, amely automatikusan átveszi az irányítást a jármű felett, ha a sofőr sérülést szenvedett, vagy orvosi ellátásra szorul. A 2014-ben megválasztott Peugeot 308 modell után a 2015-ös 85-ik genfi kiállításon a VW Passat B8 nyerte el első helyezéssel a hét-kocsis döntőben Az Év Gépkocsija nevet, megelőzve a BMW i3 és a Tesla S modellt.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "120-280 lóerő",
@@ -412,7 +419,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 10,
                             Description = "A 2012-es párizsi autószalonon mutatták be a hetedik generációt. A modell a VW-konszern új MQB-platformjára épül. Az autó formája jelentősen különbözött az előző két generációétól. A 3 és 5 ajtós, kombi, valamint az itt már Sportsvannak átkereszrelt MPV modellek mellől végleg kikerült a kabrió a gyártásból.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "77-360 lóerő",
@@ -422,7 +429,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 1,
                             Description = "A második generációs Tiguant 2015 szeptemberében mutatták be a Frankfurti Nemzetközi Autókiállításon a 2016-os modellévre, és a Volkswagen Csoport MQB A2 platformjára építették. Eredetileg a rövid tengelytávú változatot leplezték le, amely 50 kg-mal (110 font) könnyebb, mint a korábbi Tiguan, miközben 60 mm-rel (2,4 hüvelyk) hosszabb, 30 mm-rel (1,2 hüvelyk) szélesebb, és a tengelytávja 77 mm-rel (3,0 hüvelyk) hosszabb. Ennek eredményeként a VW azt állította, hogy javult a belső tér, és a hátsó utasoknak 29 mm-rel (1,1 hüvelyk) több hely jutott a térdüknek. Továbbá, a hátsó üléspad aszimmetrikusan osztott, és akár 180 mm-ig (7,1 hüvelyk) hosszában is állítható.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "113-316 lóerő",
@@ -432,7 +439,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             Description = "A Volkswagen Arteon egy német autógyártó, a Volkswagen által gyártott autó. Nagy családi autóként vagy középkategóriás autóként írják le, és ötajtós liftback vagy kombi karosszéria változatokban elérhető. Az Arteont 2017. március 6-án mutatták be a Genfi Autószalonon, majd a Chicagói Autószalonon is, az észak-amerikai piac számára. Az Arteon közvetlen utódja a CC-nek; azonban a Volkswagen bejelentette, hogy az Arteon magasabb kategóriát céloz meg, mint a CC. Az autó az MQB platformra épül.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "148-276 lóerő",
@@ -442,7 +449,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             Description = "A Volkswagen T-Roc egy kisméretű crossover SUV, amelyet a német autógyártó, a Volkswagen gyárt. 2017-ben a Frankfurti Autószalonon mutatták be, és 2017 novemberében indították el. Az autó a Volkswagen Csoport MQB A1 platformjára épül, és általában a C-szegmenses Golf SUV megfelelőjeként tartják számon. A T-Roc a Tiguan és a kissé kisebb T-Cross között helyezkedik el, miközben méretben körülbelül megegyezik a Taigóval.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "113-296 lóerő",
@@ -452,7 +459,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             Description = "A Volkswagen ID.3 egy alsó középkategóriás, akkumulátoros elektromos autótípus, mely a Volkswagen első dedikált elektromos autótípusa. A hivatalos bemutatóra 2019. szeptember 9-én került sor a Frankfurti Autószalonon. Az ID.3 az első sorozatgyártású jármű, amely a kifejezetten elektromos autókhoz tervezett MEB-platformon alapul. Az MEB-platformban a hajtóakkumulátor a jármű padlójában foglal helyet. Az ID.3 a Volkswagen ID koncepciójárműre épül. Az ID az „intelligens tervezés” rövidítése. A 3-as szám a kompakt osztályt jelöli. 2021-ben a jármű negyedik lett az Európai Év Autója szavazáson. Az ID.3-at a „Prémium 50 000 euróig” kategóriában választották a győztesnek.",
                             Engine = "Villanymotor",
                             Horsepower = "150 kW",
@@ -462,7 +469,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             Description = "A Volkswagen T6 a Volkswagen Transporter sorozatának hatodik generációja, amelyet 2015-ben mutattak be. A T6 a márka ikonikus furgonja, amelyet személy- és teherautóként egyaránt forgalmaznak. A Volkswagen Transporter család az egyik legismertebb és legnépszerűbb furgon-sorozat a világon, és a T6 a sorozat egyik legfontosabb modellje, amely több mint öt évtizedes történettel rendelkezik.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "89-201 lóerő",
@@ -472,7 +479,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 6,
                             Description = "A Volkswagen Polo egy szuperminikategóriás (B-szegmens) autó, amelyet a német autógyártó, a Volkswagen gyárt 1975 óta. Európában és más piacokon világszerte értékesítik hatchback, szedán és kombi változatokban a gyártás teljes időszaka alatt. 2018-tól kezdődően hat különböző generációja készült a Polónak, amelyeket általában 'Series' vagy 'Mark' számokkal azonosítanak. Néhány generáció félidőben ráncfelvarráson esett át, és az ilyen frissített változatokat nem hivatalosan a szám után hozzáadott 'F' betűvel nevezik, például Mk2F. Néhány autós szaklap és egyes rajongók a ráncfelvarrásokat külön modellekként kezelik, így az előző generációk esetében a Polo Mk1-től Mk7-ig terjedő elnevezéseket használnak. Minden Polo modell egy két- vagy háromkarakteres Volkswagen Csoportos Típus számmal is azonosítható. Az hivatalos VW Polo történet az I. – IV. szériákat római számokkal[1] vagy arab számokkal jelöli, a ráncfelvarrott változatokat pedig 'Phase II' modelleként emlegetik. Az autó karosszériája az évek során változott, eredetileg hatchback volt, amely az Audi 50-ből származott.",
                             Engine = "Otto-motor/dízelmotor",
                             Horsepower = "65-192 lóerő",
@@ -507,70 +514,70 @@ namespace VroomWiki.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 6,
+                            Id = 7,
                             TotalIncome = 202.1f,
                             TotalSale = 10.1f,
                             Year = 2014
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 8,
                             TotalIncome = 213.4f,
                             TotalSale = 10.4f,
                             Year = 2015
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 9,
                             TotalIncome = 217.6f,
                             TotalSale = 10.3f,
                             Year = 2016
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 10,
                             TotalIncome = 228f,
                             TotalSale = 10.6f,
                             Year = 2017
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 1,
                             TotalIncome = 235.9f,
                             TotalSale = 10.8f,
                             Year = 2018
                         },
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             TotalIncome = 251.9f,
                             TotalSale = 10.9f,
                             Year = 2019
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             TotalIncome = 212.3f,
                             TotalSale = 9.3f,
                             Year = 2020
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             TotalIncome = 249.2f,
                             TotalSale = 8.3f,
                             Year = 2021
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             TotalIncome = 245.1f,
                             TotalSale = 8.3f,
                             Year = 2022
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 6,
                             TotalIncome = 322.2f,
                             TotalSale = 9.1f,
                             Year = 2023
@@ -605,7 +612,7 @@ namespace VroomWiki.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 6,
+                            Id = 7,
                             CreatedAt = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@admin.com",
                             Password = "admin01",
@@ -613,7 +620,7 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 8,
                             CreatedAt = new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "nagybela01@gmail.com",
                             Password = "bela01",
@@ -621,41 +628,12 @@ namespace VroomWiki.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 9,
                             CreatedAt = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kissjanos@gmail.com",
                             Password = "janos1",
                             Username = "kjanos"
                         });
-                });
-
-            modelBuilder.Entity("Models.Configuration", b =>
-                {
-                    b.HasOne("Models.ConfigColor", "Color_id")
-                        .WithMany()
-                        .HasForeignKey("Color_idId");
-
-                    b.HasOne("Models.ConfigEngine", "Engine_id")
-                        .WithMany()
-                        .HasForeignKey("Engine_idId");
-
-                    b.HasOne("Models.ConfigTransmissionType", "TransmissionTpye_id")
-                        .WithMany()
-                        .HasForeignKey("TransmissionTpye_idId");
-
-                    b.HasOne("Models.User", "User_id")
-                        .WithMany()
-                        .HasForeignKey("User_idId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Color_id");
-
-                    b.Navigation("Engine_id");
-
-                    b.Navigation("TransmissionTpye_id");
-
-                    b.Navigation("User_id");
                 });
 #pragma warning restore 612, 618
         }

@@ -36,9 +36,10 @@ namespace VroomWiki.Data
             modelBuilder.Entity<ConfigTransmissionType>().HasIndex(c => c.Id).IsUnique();
             modelBuilder.Entity<ConfigColor>().HasIndex(c => c.Id).IsUnique();
             modelBuilder.Entity<ConfigEngine>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Configuration>().HasIndex(c => c.Id).IsUnique();
 
 
-
+           
             var configEngines = LoadConfigEnginesFromJson();
             var configColor = LoadConfigColorFromJson();
             var configTransType = LoadConfigTransTypeFromJson();
@@ -46,6 +47,8 @@ namespace VroomWiki.Data
             var pastModel = LoadPastModelsFromJson();
             var sales = LoadSalesFromJson();
             var users = LoadUsersFromJson();
+            var configurations = LoadConfigurationsFromJson();
+
 
             foreach (var engine in configEngines)
             {
@@ -96,7 +99,13 @@ namespace VroomWiki.Data
                     user.Id = GetUniqueId();
                 }
             }
-
+            foreach (var config in configurations)
+            {
+                if (config.Id == 0)
+                {
+                    config.Id = GetUniqueId();
+                }
+            }
 
             modelBuilder.Entity<ConfigEngine>().HasData(configEngines);
             modelBuilder.Entity<ConfigColor>().HasData(configColor);
@@ -105,9 +114,11 @@ namespace VroomWiki.Data
             modelBuilder.Entity<PastModel>().HasData(pastModel);
             modelBuilder.Entity<Sale>().HasData(sales);
             modelBuilder.Entity<User>().HasData(users);
+            modelBuilder.Entity<Configuration>().HasData(configurations);
 
         }
 
+        
         private List<ConfigEngine> LoadConfigEnginesFromJson()
         {
             // JSON fájl beolvasása
@@ -149,6 +160,12 @@ namespace VroomWiki.Data
             // JSON fájl beolvasása
             var json = File.ReadAllText("Users.json");
             return JsonConvert.DeserializeObject<List<User>>(json);
+        }
+        private List<Configuration> LoadConfigurationsFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("Configurations.json");
+            return JsonConvert.DeserializeObject<List<Configuration>>(json);
         }
 
 

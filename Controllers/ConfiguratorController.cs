@@ -18,6 +18,15 @@ namespace VroomWiki.Controllers
             _dbContext = dbContext;
         }
 
+        //[HttpGet()]
+        //public IActionResult GetConfigs()
+        //{
+        //    var configs= _dbContext.Configuration.ToList()
+        //        ;
+        //    return Ok(configs);
+        //}
+
+
         // COLORS
 
         // GET: api/<ConfiguratorController>
@@ -72,7 +81,8 @@ namespace VroomWiki.Controllers
         [HttpGet("transmissions")]
         public IActionResult GetTransmissionTypes()
         {
-            var transTypes = _dbContext.TransmissionType.ToList();
+            var transTypes = _dbContext.TransmissionType.ToList()
+                .Select(t => t.ToConfigTransTypesDTO());
             return Ok(transTypes);
         }
 
@@ -86,7 +96,7 @@ namespace VroomWiki.Controllers
                 return NotFound();
             }
 
-            return Ok(transType);
+            return Ok(transType.ToConfigTransTypesDTO());
         }
 
         // POST api/<ConfiguratorController>

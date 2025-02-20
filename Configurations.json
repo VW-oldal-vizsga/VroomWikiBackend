@@ -1,0 +1,17 @@
+[
+    {
+        "User_Id":2,
+        "ConfigName":"Álom",
+        "Engine_Id":1,
+        "Horsepower":150,
+        "YearProd":2024,
+        "Color_Id":1,
+        "totalCost":3000,
+        "VehicleType": "hatchback",
+        "TransmissionType_Id":1,
+        "WheelDrive":"első",
+        "WheelType":"19es",
+        "FuelConsumption":"10",
+        "Co2Emission":"6.2"
+    }
+]
