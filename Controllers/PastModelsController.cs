@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VroomWiki.Data;
 using VroomWiki.Mappers;
 
@@ -40,8 +41,15 @@ namespace VroomWiki.Controllers
 
         // POST api/<PastModelsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Authorize(Roles = "admin")]
+        public IActionResult AddProduct(dynamic newPastModel)
         {
+            return this.Run(() =>
+            {
+                var pastModel = value.ToPastModel();
+                _dbContext.PastModel.Add(pastModel);
+                _dbContext.SaveChanges();
+            });
         }
 
         // PUT api/<PastModelsController>/5
