@@ -1,6 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Backend_Webshop.Controllers;
+using Backend_Webshop.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Models;
+using System.Security.Claims;
 using VroomWiki.Data;
 using VroomWiki.Mappers;
+using VroomWiki.Models;
+using VroomWiki.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,53 +18,70 @@ namespace VroomWiki.Controllers
     public class AuthController : ControllerBase
     {
         
-        private readonly AppDbContext _dbContext;
-        public AuthController(AppDbContext dbContext)
+        private readonly AuthRepository authRepository;
+        public AuthController(AuthRepository authRepository)
         {
-            _dbContext = dbContext;
+            this.authRepository = authRepository;
         }
 
         // GET: api/<AuthController>
 
 
-        [HttpGet]
-        public IActionResult GetUsers()
+        [HttpPost("login")]
+        public IActionResult Login(object loginData)
         {
-            var users = _dbContext.User.ToList()
-                .Select(u => u.ToUsersDTO());
-            return Ok(users);
-        }
-
-        // GET api/<AuthController>/5
-        [HttpGet("{id}")]
-        public IActionResult GetUserById(int id)
-        {
-            var user = _dbContext.User.Find(id);
-
-            if (user == null)
+            return this.Run(() =>
             {
-                return NotFound();
-            }
-
-            return Ok(user.ToUsersDTO());
+                var user = authRepository.Login(loginData.Deserialize<LoginModel>());
+                if (user == null)
+                    return Unauthorized(new
+                    {
+                        message = "Invalid username or password"
+                    });
+                return Ok(user);
+            });
         }
 
-        // POST api/<AuthController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("registration")]
+        public IActionResult Registration(object registrationData)
         {
+            return this.Run(() =>
+            {
+                var user = authRepository.RegisterUser(registrationData.Deserialize<User>());
+                if (user == null)
+                    return BadRequest(new
+                    {
+                        message = "Unsuccessfull registration"
+                    });
+                return Ok(user);
+            });
         }
 
-        // PUT api/<AuthController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost("logout")]
+        [Authorize]
+        public IActionResult logout()
         {
+            return this.Run(() =>
+            {
+                authRepository.Logout(this.User.Claims.FirstOrDefault(c => c.Type == "Token")?.Value);
+                return Ok();
+            });
         }
 
-        // DELETE api/<AuthController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpGet]
+        [Authorize]
+        public IActionResult Check()
         {
+            return this.Run(() =>
+            {
+                return Ok(new
+                {
+                    validTo = DateTime.Parse(this.User.Claims.FirstOrDefault(c => c.Type == "ValidTo")?.Value),
+                    Email = this.User.Claims.FirstOrDefault(c => c.Type == "Email")?.Value,
+                    Roles = this.User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value),
+                    Token = this.User.Claims.FirstOrDefault(c => c.Type == "Token")?.Value,
+                });
+            });
         }
     }
 }

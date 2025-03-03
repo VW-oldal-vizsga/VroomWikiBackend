@@ -16,6 +16,7 @@ namespace Models
 
         [ForeignKey("User")]
         public required int User_Id { get; set; }
+        public User User { get; set; }
        
 
     [StringLength(50)]
@@ -23,6 +24,7 @@ namespace Models
 
         [ForeignKey("ConfigEngine")]
         public required int Engine_Id { get; set; }
+        public ConfigEngine Engine { get; set; }
         
 
         public required int? Horsepower { get; set; }
@@ -30,6 +32,7 @@ namespace Models
 
         [ForeignKey("ConfigColor")]
         public required int Color_Id { get; set; }
+        public ConfigColor Color { get; set; }
         
 
         public required int? totalCost { get; set; }
@@ -39,7 +42,7 @@ namespace Models
 
         [ForeignKey("ConfigTransmissionType")]
         public required int TransmissionType_Id { get; set; }
-        
+        public ConfigTransmissionType TransmissionType { get; set; }
 
         [StringLength(25)]
         public required string? WheelDrive { get; set; }
