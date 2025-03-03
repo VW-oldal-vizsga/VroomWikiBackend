@@ -81,7 +81,7 @@ namespace VroomWiki.Controllers
         [HttpGet("transmissions")]
         public IActionResult GetTransmissionTypes()
         {
-            var transTypes = _dbContext.TransmissionType.ToList()
+            var transTypes = _dbContext.TransmissionTypes.ToList()
                 .Select(t => t.ToConfigTransTypesDTO());
             return Ok(transTypes);
         }
@@ -89,7 +89,7 @@ namespace VroomWiki.Controllers
         [HttpGet("transmission/{id}")]
         public IActionResult GetTransmissionTypeById([FromRoute] int id)
         {
-            var transType = _dbContext.TransmissionType.Find(id);
+            var transType = _dbContext.TransmissionTypes.Find(id);
 
             if (transType == null)
             {

@@ -18,7 +18,7 @@ namespace VroomWiki.Data
         public DbSet<MainPage> MainPage { get; set; }
         public DbSet<Sale> Sale { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<ConfigTransmissionType> TransmissionType { get; set; }
+        public DbSet<ConfigTransmissionType> TransmissionTypes { get; set; }
         public DbSet<ConfigColor> Color { get; set; }
         public DbSet<ConfigEngine> Engine { get; set; }
 

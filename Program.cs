@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using VroomWiki.Data;
+using VroomWiki.Repositories;
 
 namespace VroomWiki
 {
@@ -23,6 +24,10 @@ namespace VroomWiki
                 options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
                     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")));
             });
+            builder.Services.AddScoped<PastModelsRepository>();
+            builder.Services.AddScoped<AuthRepository>();
+            //builder.Services.AddScoped<OrderRepository>();
+
 
             var app = builder.Build();
 

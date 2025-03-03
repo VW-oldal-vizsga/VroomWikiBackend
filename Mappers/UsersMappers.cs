@@ -10,7 +10,7 @@ namespace VroomWiki.Mappers
             {
                 Id = user.Id,
                 Email = user.Email,
-                Username = user.Username
+                
             };
         }
     }

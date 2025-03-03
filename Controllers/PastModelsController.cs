@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Backend_Webshop.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Newtonsoft.Json;
 using VroomWiki.Data;
 using VroomWiki.Mappers;
+using VroomWiki.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,57 +15,79 @@ namespace VroomWiki.Controllers
     [ApiController]
     public class PastModelsController : ControllerBase
     {
-        private readonly AppDbContext _dbContext;
-        public PastModelsController(AppDbContext dbContext)
+        private readonly PastModelsRepository pastModelsRepository;
+
+        public PastModelsController(PastModelsRepository pastModelsRepository)
         {
-            _dbContext = dbContext;
+            this.pastModelsRepository = pastModelsRepository;
         }
         // GET: api/<PastModelsController>
         [HttpGet]
-        public IActionResult GetPastModels()
+        public IActionResult GetProducts()
         {
-            var pastModels = _dbContext.PastModel.ToList()
-                .Select(p =>p.ToPastModelsDTO());
-            return Ok(pastModels);
+            return this.Run(() =>
+            {
+                return Ok(pastModelsRepository.GetAll().Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.Description,
+                    p.ReleaseDate,
+                    p.Engine,
+                    p.Horsepower
+                }));
+            });
         }
 
         // GET api/<PastModelsController>/5
         [HttpGet("{id}")]
-        public IActionResult GetPastModelById(int id)
-        {
-            var pastModel= _dbContext.PastModel.Find(id);
-
-            if (pastModel== null)
-            {
-                return NotFound();
-            }
-
-            return Ok(pastModel.ToPastModelsDTO());
-        }
-
-        // POST api/<PastModelsController>
-        [HttpPost]
-        [Authorize(Roles = "admin")]
-        public IActionResult AddProduct(dynamic newPastModel)
+        public IActionResult GetOneModel(int id)
         {
             return this.Run(() =>
             {
-                var pastModel = value.ToPastModel();
-                _dbContext.PastModel.Add(pastModel);
-                _dbContext.SaveChanges();
+                return Ok(pastModelsRepository.GetOneModel(id).Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.Description,
+                    p.ReleaseDate,
+                    p.Engine,
+                    p.Horsepower
+                }));
             });
         }
 
-        // PUT api/<PastModelsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //POST api/<PastModelsController>
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public IActionResult AddPastModel(dynamic newPastModel)
         {
+            return this.Run(() =>
+            {
+                var pastModel = JsonConvert.DeserializeObject<PastModel>(newPastModel.ToString());
+                return Ok(pastModelsRepository.AddPastModel(pastModel));
+            });
         }
 
-        // DELETE api/<PastModelsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
+        public IActionResult UpdatePastModel(int id, dynamic productToModify)
         {
+            return this.Run(() =>
+            {
+                return Ok(pastModelsRepository.UpdatePastModel(id, productToModify));
+            });
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
+        public IActionResult DeletePastModel(int id)
+        {
+            return this.Run(() =>
+            {
+                pastModelsRepository.DeletePastModel(id);
+                return Ok();
+            });
         }
     }
 }

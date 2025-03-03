@@ -11,7 +11,7 @@ namespace VroomWiki.Mappers
             {
                 Id = pastModels.Id,
                 ModelName = pastModels.Name,
-                Image = pastModels.Image
+                Image = pastModels.ImageBase64
             };
         }
     }

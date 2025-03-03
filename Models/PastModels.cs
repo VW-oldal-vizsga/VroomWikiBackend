@@ -18,12 +18,13 @@ namespace Models
         [StringLength(250)]
         public string? Description { get; set; }
 
-        public string? Image { get; set; }
+        public string? ImageBase64 { get; set; }
 
         [StringLength(30)]
         public required string? Engine { get; set; }
 
         public required string? Horsepower { get; set; }
         public required int? ReleaseDate { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }
