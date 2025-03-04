@@ -11,7 +11,7 @@ using VroomWiki.Data;
 namespace VroomWiki.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250303111029_Init")]
+    [Migration("20250304075100_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -216,9 +216,6 @@ namespace VroomWiki.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<float?>("Co2Emission")
-                        .HasColumnType("float");
-
                     b.Property<int>("Color_Id")
                         .HasColumnType("int");
 
@@ -229,35 +226,10 @@ namespace VroomWiki.Migrations
                     b.Property<int>("Engine_Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("FuelConsumption")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
-
-                    b.Property<int?>("Horsepower")
-                        .HasColumnType("int");
-
                     b.Property<int>("TransmissionType_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("User_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("VehicleType")
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
-
-                    b.Property<string>("WheelDrive")
-                        .HasMaxLength(25)
-                        .HasColumnType("varchar(25)");
-
-                    b.Property<string>("WheelType")
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
-
-                    b.Property<int?>("YearProd")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("totalCost")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -271,19 +243,11 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 10,
-                            Co2Emission = 6.2f,
                             Color_Id = 1,
                             ConfigName = "Álom",
                             Engine_Id = 1,
-                            FuelConsumption = "10",
-                            Horsepower = 150,
                             TransmissionType_Id = 1,
-                            User_Id = 2,
-                            VehicleType = "hatchback",
-                            WheelDrive = "első",
-                            WheelType = "19es",
-                            YearProd = 2024,
-                            totalCost = 3000
+                            User_Id = 2
                         });
                 });
 

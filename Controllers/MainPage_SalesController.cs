@@ -1,7 +1,10 @@
 ﻿using Backend_Webshop.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Newtonsoft.Json;
 using VroomWiki.Data;
-using VroomWiki.Mappers;
+
 using VroomWiki.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -34,6 +37,10 @@ namespace VroomWiki.Controllers
                     p.Employees,
                     p.Factories,
                     p.Chairman,
+                    p.Founded,
+                    p.Headquarters,
+                    p.Products,
+                    p.Profit
                 }));
             });
         }
@@ -71,22 +78,27 @@ namespace VroomWiki.Controllers
             });
         }
 
-        // POST api/<MainPage_SalesController>
+        //POST api/<PastModelsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Authorize(Roles = "admin")]
+        public IActionResult AddSale(dynamic newSale)
         {
+            return this.Run(() =>
+            {
+                var sale = JsonConvert.DeserializeObject<PastModel>(newSale.ToString());
+                return Ok(mainPage_SalesRepository.AddSale(sale));
+            });
         }
 
-        // PUT api/<MainPage_SalesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<MainPage_SalesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Authorize(Roles = "admin")]
+        public IActionResult DeleteSale(int id)
         {
+            return this.Run(() =>
+            {
+                mainPage_SalesRepository.DeleteSale(id);
+                return Ok();
+            });
         }
     }
 }

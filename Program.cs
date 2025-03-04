@@ -26,7 +26,8 @@ namespace VroomWiki
             });
             builder.Services.AddScoped<PastModelsRepository>();
             builder.Services.AddScoped<AuthRepository>();
-            //builder.Services.AddScoped<OrderRepository>();
+            builder.Services.AddScoped<MainPage_SalesRepository>();
+            builder.Services.AddScoped<ConfiguratorRepository>();
 
 
             var app = builder.Build();

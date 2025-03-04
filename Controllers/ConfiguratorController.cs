@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Backend_Webshop.Controllers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Models;
+using Newtonsoft.Json;
 using VroomWiki.Data;
-using VroomWiki.Mappers;
+
+using VroomWiki.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,111 +15,175 @@ namespace VroomWiki.Controllers
     [ApiController]
     public class ConfiguratorController : ControllerBase
     {
-        private const string id = "{id}";
-        private readonly AppDbContext _dbContext;
+        private readonly ConfiguratorRepository configuratorRepository;
 
-        public ConfiguratorController(AppDbContext dbContext)
+        public ConfiguratorController(ConfiguratorRepository configuratorRepository)
         {
-            _dbContext = dbContext;
+            this.configuratorRepository = configuratorRepository;
         }
 
-        //[HttpGet()]
-        //public IActionResult GetConfigs()
-        //{
-        //    var configs= _dbContext.Configuration.ToList()
-        //        ;
-        //    return Ok(configs);
-        //}
+        [HttpGet]
+        public IActionResult GetConfigurations()
+        {
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.GetAllConfigs().Select(p => new
+                {
+                    p.Id,
+                    p.Color_Id,
+                    p.Engine_Id,
+                    p.TransmissionType_Id,
+                    p.ConfigName,
+                    p.User_Id,
+                }));
+            });
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetOneConfiguration(int id)
+        {
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.GetOneConfiguration(id).Select(p => new
+                {
+                    p.Id,
+                    p.Color_Id,
+                    p.Engine_Id,
+                    p.TransmissionType_Id,
+                    p.ConfigName,
+                    p.User_Id,
+                }));
+            });
+        }
 
 
         // COLORS
 
         // GET: api/<ConfiguratorController>
         [HttpGet("colors")]
-        public IActionResult GetColors()
+        public IActionResult GetAllColors()
         {
-            var colors = _dbContext.Color.ToList()
-                .Select(c=> c.ToConfigColorDTO());
-            return Ok(colors);
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.GetAllColor().Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                }));
+            });
         }
 
         // GET api/<ConfiguratorController>/5
         [HttpGet("colors/{id}")]
-        public IActionResult GetColorById([FromRoute] int id)
+        public IActionResult GetOneColor(int id)
         {
-            var color=_dbContext.Color.Find(id);
-
-            if (color==null)
+            return this.Run(() =>
             {
-                return NotFound();   
-            }
-
-            return Ok(color.ToConfigColorDTO());
+                return Ok(configuratorRepository.GetOneColor(id).Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                }));
+            });
         }
 
         // ENGINES
 
         [HttpGet("engines")]
-        public IActionResult GetEngines()
+        public IActionResult GetAllEngines()
         {
-            var engines = _dbContext.Engine.ToList()
-                .Select(e => e.ToConfigEngineDTO());
-            return Ok(engines);
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.GetAllEngines().Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.Horsepower,
+                    p.FuelConsumption,
+                    p.Co2Emission,
+                    p.FuelType,
+                }));
+            });
         }
 
         // GET api/<ConfiguratorController>/5
         [HttpGet("engines/{id}")]
-        public IActionResult GetEngineById([FromRoute] int id)
+        public IActionResult GetOneEngines(int id)
         {
-            var engine = _dbContext.Engine.Find(id);
-
-            if (engine == null)
+            return this.Run(() =>
             {
-                return NotFound();
-            }
-
-            return Ok(engine.ToConfigEngineDTO());
+                return Ok(configuratorRepository.GetOneEngine(id).Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.Horsepower,
+                    p.FuelConsumption,
+                    p.Co2Emission,
+                    p.FuelType,
+                }));
+            });
         }
 
         // TRANSMISSION_TYPES
 
         [HttpGet("transmissions")]
-        public IActionResult GetTransmissionTypes()
+        public IActionResult GetAllTransmissions()
         {
-            var transTypes = _dbContext.TransmissionTypes.ToList()
-                .Select(t => t.ToConfigTransTypesDTO());
-            return Ok(transTypes);
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.GetAllTransmissions().Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.WheelDrive,
+                }));
+            });
         }
 
         [HttpGet("transmission/{id}")]
-        public IActionResult GetTransmissionTypeById([FromRoute] int id)
+        public IActionResult GetOneTransmissions(int id)
         {
-            var transType = _dbContext.TransmissionTypes.Find(id);
-
-            if (transType == null)
+            return this.Run(() =>
             {
-                return NotFound();
-            }
-
-            return Ok(transType.ToConfigTransTypesDTO());
+                return Ok(configuratorRepository.GetOneTransmission(id).Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.WheelDrive,
+                }));
+            });
         }
 
-        // POST api/<ConfiguratorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Authorize(Roles = "admin")]
+        public IActionResult AddConfiguration(dynamic newConfig)
         {
+            return this.Run(() =>
+            {
+                var config = JsonConvert.DeserializeObject<PastModel>(newConfig.ToString());
+                return Ok(configuratorRepository.AddConfiguration(config));
+            });
         }
 
-        // PUT api/<ConfiguratorController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Authorize(Roles = "admin")]
+        public IActionResult UpdateConfiguration(int id, dynamic configToModify)
         {
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.UpdateConfiguration(id, configToModify));
+            });
         }
 
-        // DELETE api/<ConfiguratorController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Authorize(Roles = "admin")]
+        public IActionResult DeleteConfiguration(int id)
         {
+            return this.Run(() =>
+            {
+                configuratorRepository.DeleteConfiguration(id);
+                return Ok();
+            });
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Models;
 using Newtonsoft.Json;
 using VroomWiki.Data;
-using VroomWiki.Mappers;
+
 using VroomWiki.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -71,11 +71,11 @@ namespace VroomWiki.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "admin")]
-        public IActionResult UpdatePastModel(int id, dynamic productToModify)
+        public IActionResult UpdatePastModel(int id, dynamic pastModelToModify)
         {
             return this.Run(() =>
             {
-                return Ok(pastModelsRepository.UpdatePastModel(id, productToModify));
+                return Ok(pastModelsRepository.UpdatePastModel(id, pastModelToModify));
             });
         }
 

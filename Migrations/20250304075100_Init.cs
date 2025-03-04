@@ -42,20 +42,8 @@ namespace VroomWiki.Migrations
                     ConfigName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Engine_Id = table.Column<int>(type: "int", nullable: false),
-                    Horsepower = table.Column<int>(type: "int", nullable: true),
-                    YearProd = table.Column<int>(type: "int", nullable: true),
                     Color_Id = table.Column<int>(type: "int", nullable: false),
-                    totalCost = table.Column<int>(type: "int", nullable: true),
-                    VehicleType = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    TransmissionType_Id = table.Column<int>(type: "int", nullable: false),
-                    WheelDrive = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    WheelType = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    FuelConsumption = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Co2Emission = table.Column<float>(type: "float", nullable: true)
+                    TransmissionType_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -204,8 +192,8 @@ namespace VroomWiki.Migrations
 
             migrationBuilder.InsertData(
                 table: "Configuration",
-                columns: new[] { "Id", "Co2Emission", "Color_Id", "ConfigName", "Engine_Id", "FuelConsumption", "Horsepower", "TransmissionType_Id", "User_Id", "VehicleType", "WheelDrive", "WheelType", "YearProd", "totalCost" },
-                values: new object[] { 10, 6.2f, 1, "Álom", 1, "10", 150, 1, 2, "hatchback", "első", "19es", 2024, 3000 });
+                columns: new[] { "Id", "Color_Id", "ConfigName", "Engine_Id", "TransmissionType_Id", "User_Id" },
+                values: new object[] { 10, 1, "Álom", 1, 1, 2 });
 
             migrationBuilder.InsertData(
                 table: "Engine",
