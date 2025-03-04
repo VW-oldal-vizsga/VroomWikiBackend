@@ -59,7 +59,7 @@ namespace VroomWiki.Controllers
 
         //POST api/<PastModelsController>
         [HttpPost]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult AddPastModel(dynamic newPastModel)
         {
             return this.Run(() =>
@@ -70,7 +70,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult UpdatePastModel(int id, dynamic pastModelToModify)
         {
             return this.Run(() =>
@@ -80,7 +80,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult DeletePastModel(int id)
         {
             return this.Run(() =>

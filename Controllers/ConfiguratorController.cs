@@ -155,18 +155,18 @@ namespace VroomWiki.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult AddConfiguration(dynamic newConfig)
         {
             return this.Run(() =>
             {
-                var config = JsonConvert.DeserializeObject<PastModel>(newConfig.ToString());
+                var config = JsonConvert.DeserializeObject<Configuration>(newConfig.ToString());
                 return Ok(configuratorRepository.AddConfiguration(config));
             });
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult UpdateConfiguration(int id, dynamic configToModify)
         {
             return this.Run(() =>
@@ -176,7 +176,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "admin")]
+       //[Authorize(Roles = "admin")]
         public IActionResult DeleteConfiguration(int id)
         {
             return this.Run(() =>

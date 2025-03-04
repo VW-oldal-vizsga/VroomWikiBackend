@@ -45,11 +45,11 @@ namespace VroomWiki.Repositories
 
         public void DeleteSale(int saleId)
         {
-            var sale = context.Set<PastModel>().SingleOrDefault(p => p.Id == saleId);
+            var sale = context.Set<Sale>().SingleOrDefault(p => p.Id == saleId);
             if (sale == null)
                 throw new Exception("Model not found");
 
-            context.Set<PastModel>().Remove(sale);
+            context.Set<Sale>().Remove(sale);
             context.SaveChanges();
         }
     }

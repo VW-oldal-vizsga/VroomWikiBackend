@@ -53,9 +53,9 @@ namespace VroomWiki.Controllers
                 return Ok(mainPage_SalesRepository.GetAllSale().Select(p => new
                 {
                     p.Id,
+                    p.Year,
                     p.TotalSale,
                     p.TotalIncome,
-                    p.Year,
                     
                 }));
             });
@@ -79,19 +79,19 @@ namespace VroomWiki.Controllers
         }
 
         //POST api/<PastModelsController>
-        [HttpPost]
-        [Authorize(Roles = "admin")]
+        [HttpPost("sales")]
+        //[Authorize(Roles = "admin")]
         public IActionResult AddSale(dynamic newSale)
         {
             return this.Run(() =>
             {
-                var sale = JsonConvert.DeserializeObject<PastModel>(newSale.ToString());
+                var sale = JsonConvert.DeserializeObject<Sale>(newSale.ToString());
                 return Ok(mainPage_SalesRepository.AddSale(sale));
             });
         }
 
-        [HttpDelete("{id}")]
-        [Authorize(Roles = "admin")]
+        [HttpDelete("sales/{id}")]
+        //[Authorize(Roles = "admin")]
         public IActionResult DeleteSale(int id)
         {
             return this.Run(() =>

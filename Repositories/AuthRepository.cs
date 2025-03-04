@@ -25,6 +25,7 @@ namespace VroomWiki.Repositories
 
         public dynamic Login(LoginModel? loginModel) 
         {
+            string? username = loginModel?.Username.ToString();
             string? email = loginModel?.Email.ToString();
             string? password = loginModel?.Password.ToString();
 
