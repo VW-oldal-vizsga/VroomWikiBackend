@@ -34,7 +34,8 @@ namespace VroomWiki.Controllers
                     p.Description,
                     p.ReleaseDate,
                     p.Engine,
-                    p.Horsepower
+                    p.Horsepower,
+                    p.ImageBase64
                 }));
             });
         }
@@ -52,7 +53,8 @@ namespace VroomWiki.Controllers
                     p.Description,
                     p.ReleaseDate,
                     p.Engine,
-                    p.Horsepower
+                    p.Horsepower,
+                    p.ImageBase64,
                 }));
             });
         }
