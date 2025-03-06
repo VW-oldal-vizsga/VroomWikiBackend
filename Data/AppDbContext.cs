@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Backend_Webshop.Extensions;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Newtonsoft.Json;
+using VroomWiki.Models;
 
 namespace VroomWiki.Data
 {
@@ -21,6 +23,8 @@ namespace VroomWiki.Data
         public DbSet<ConfigTransmissionType> TransmissionTypes { get; set; }
         public DbSet<ConfigColor> Color { get; set; }
         public DbSet<ConfigEngine> Engine { get; set; }
+        public DbSet<SessionModel> Sessions{ get; set; }
+        public DbSet<UserRoleModel> UserRoles{ get; set; }
 
         //Package manager console-ban kell futtatni
         //add-migration Init
@@ -50,62 +54,62 @@ namespace VroomWiki.Data
             var configurations = LoadConfigurationsFromJson();
 
 
-            foreach (var engine in configEngines)
-            {
-                if (engine.Id == 0)
-                {
-                    engine.Id = GetUniqueId();
-                }
-            }
-            foreach (var color in configColor)
-            {
-                if (color.Id == 0)
-                {
-                    color.Id = GetUniqueId();
-                }
-            }
-            foreach (var transType in configTransType)
-            {
-                if (transType.Id == 0)
-                {
-                    transType.Id = GetUniqueId();
-                }
-            }
-            foreach (var mainP in mainPage)
-            {
-                if (mainP.Id == 0)
-                {
-                    mainP.Id = GetUniqueId();
-                }
-            }
-            foreach (var pastM in pastModel)
-            {
-                if (pastM.Id == 0)
-                {
-                    pastM.Id = GetUniqueId();
-                }
-            }
-            foreach (var sale in sales)
-            {
-                if (sale.Id == 0)
-                {
-                    sale.Id = GetUniqueId();
-                }
-            }
-            foreach (var user in users)
-            {
-                if (user.Id == 0)
-                {
-                    user.Id = GetUniqueId();
-                }
-            }
-            foreach (var config in configurations)
-            {
-                if (config.Id == 0)
-                {
-                    config.Id = GetUniqueId();
-                }
-            }
+            //foreach (var engine in configEngines)
+            //{
+            //    if (engine.Id == 0)
+            //    {
+            //        engine.Id = GetUniqueId();
+            //    }
+            //}
+            //foreach (var color in configColor)
+            //{
+            //    if (color.Id == 0)
+            //    {
+            //        color.Id = GetUniqueId();
+            //    }
+            //}
+            //foreach (var transType in configTransType)
+            //{
+            //    if (transType.Id == 0)
+            //    {
+            //        transType.Id = GetUniqueId();
+            //    }
+            //}
+            //foreach (var mainP in mainPage)
+            //{
+            //    if (mainP.Id == 0)
+            //    {
+            //        mainP.Id = GetUniqueId();
+            //    }
+            //}
+            //foreach (var pastM in pastModel)
+            //{
+            //    if (pastM.Id == 0)
+            //    {
+            //        pastM.Id = GetUniqueId();
+            //    }
+            //}
+            //foreach (var sale in sales)
+            //{
+            //    if (sale.Id == 0)
+            //    {
+            //        sale.Id = GetUniqueId();
+            //    }
+            //}
+            //foreach (var user in users)
+            //{
+            //    if (user.Id == 0)
+            //    {
+            //        user.Id = GetUniqueId();
+            //    }
+            //}
+            //foreach (var config in configurations)
+            //{
+            //    if (config.Id == 0)
+            //    {
+            //        config.Id = GetUniqueId();
+            //    }
+            //}
 
             modelBuilder.Entity<ConfigEngine>().HasData(configEngines);
             modelBuilder.Entity<ConfigColor>().HasData(configColor);
@@ -113,7 +117,25 @@ namespace VroomWiki.Data
             modelBuilder.Entity<MainPage>().HasData(mainPage);
             modelBuilder.Entity<PastModel>().HasData(pastModel);
             modelBuilder.Entity<Sale>().HasData(sales);
-            modelBuilder.Entity<User>().HasData(users);
+            modelBuilder.Entity<User>().HasData(
+                users.Select(u=>new
+                {
+                    Id= u.Id,
+                    Email=u.Email,
+                    Username = u.Username,
+                    PasswordHash= u.Password!.HashPassword(),
+                    CreatedAt = DateTime.Now,
+                })
+                );
+            modelBuilder.Entity<RoleModel>().HasData(
+                new RoleModel() { Id = 1, Name = "Admin" },
+                new RoleModel() { Id = 2, Name = "User" }
+                );
+
+            modelBuilder.Entity<UserRoleModel>().HasData(
+                    new {Id=1, UserId=1,RoleId=1}
+                );
+
             modelBuilder.Entity<Configuration>().HasData(configurations);
 
         }

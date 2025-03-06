@@ -1,11 +1,14 @@
 [
-        {  
-            "name": "Piros"
-        },
-        {
-            "name": "Kék"
-        },
-        {
-            "name": "Zöld"
-        }
+  {
+    "id": 1,
+    "name": "Piros"
+  },
+  {
+    "id": 2,
+    "name": "Kék"
+  },
+  {
+    "id": 3,
+    "name": "Zöld"
+  }
 ]

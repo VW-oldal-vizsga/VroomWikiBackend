@@ -1,19 +1,23 @@
 [
-    {
-        "name": "Kézi 6 fokozatú",
-        "wheelDrive":" Elsőkerék hajtás"
-    },
-    {
-        "name": "DSG váltó 7 fokozatú",
-        "wheelDrive":" Elsőkerék hajtás"
-    },
-    {
-        "name": "DSG váltó 6 fokozatú",
-        "wheelDrive":" Elsőkerék hajtás"
-    },
-    {
-        "name": "DSG váltó 7 fokozatú",
-        "wheelDrive":"Összkerék hajtás"
-    }
+  {
+    "id": 1,
+    "name": "Kézi 6 fokozatú",
+    "wheelDrive": " Elsőkerék hajtás"
+  },
+  {
+    "id": 2,
+    "name": "DSG váltó 7 fokozatú",
+    "wheelDrive": " Elsőkerék hajtás"
+  },
+  {
+    "id": 3,
+    "name": "DSG váltó 6 fokozatú",
+    "wheelDrive": " Elsőkerék hajtás"
+  },
+  {
+    "id": 4,
+    "name": "DSG váltó 7 fokozatú",
+    "wheelDrive": "Összkerék hajtás"
+  }
 ]
 

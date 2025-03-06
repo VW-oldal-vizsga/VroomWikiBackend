@@ -12,10 +12,10 @@ namespace Models
         [Key]
         public required int Id { get; set; }
 
-        [StringLength(20)]
+        [StringLength(40)]
         public required string? Name { get; set; }
 
-        [StringLength(20)]
+        [StringLength(40)]
         public required string? WheelDrive { get; set; }
     }
 }

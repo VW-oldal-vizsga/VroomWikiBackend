@@ -12,13 +12,13 @@ namespace Models
         [Key]
         public required int Id { get; set; }
 
-        [StringLength(20)]
+        [StringLength(40)]
         public required string? Name { get; set; }
         public required int Horsepower { get; set; }
         public required float FuelConsumption { get; set; }
         public required float Co2Emission { get; set; }
 
-        [StringLength(20)]
+        [StringLength(40)]
         public required string? FuelType { get; set; }
     }
 }

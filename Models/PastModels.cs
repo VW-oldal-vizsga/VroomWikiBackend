@@ -12,15 +12,15 @@ namespace Models
         [Key]
         public required int Id { get; set; }
 
-        [StringLength(30)]
+        [StringLength(50)]
         public required string? Name { get; set; }
 
-        [StringLength(250)]
+       
         public string? Description { get; set; }
 
         public string? ImageBase64 { get; set; }
 
-        [StringLength(30)]
+        [StringLength(40)]
         public required string? Engine { get; set; }
 
         public required string? Horsepower { get; set; }

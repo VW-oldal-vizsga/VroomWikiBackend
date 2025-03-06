@@ -12,15 +12,15 @@ namespace Models
         [Key]
         public required int Id { get; set; }
 
-        [StringLength(250)]
+        
         public string? Description { get; set; }
 
         public required int? Founded { get; set; }
 
-        [StringLength(30)]
+        [StringLength(40)]
         public string? Headquarters { get; set; }
 
-        [StringLength(30)]
+        [StringLength(50)]
         public string? Factories { get; set; }
 
         [StringLength(30)]
@@ -32,7 +32,7 @@ namespace Models
         public string? Products { get; set; }
         public int? Employees { get; set; }
 
-        [StringLength(300)]
+        
         public string? History { get; set; }
 
         public string? Profit { get; set; }
