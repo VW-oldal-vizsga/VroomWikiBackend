@@ -16,6 +16,7 @@ namespace Models
 
         [ForeignKey("User")]
         public required int User_Id { get; set; }
+        public required User User { get; set; }
         
        
 
@@ -24,14 +25,17 @@ namespace Models
 
         [ForeignKey("ConfigEngine")]
         public required int Engine_Id { get; set; }
-       
-       
+        public required ConfigEngine ConfigEngine { get; set; }
+
+
         [ForeignKey("ConfigColor")]
         public required int Color_Id { get; set; }
-        
-      
+        public required ConfigColor ConfigColor { get; set; }
+
+
         [ForeignKey("ConfigTransmissionType")]
         public required int TransmissionType_Id { get; set; }
-        
+        public required ConfigTransmissionType ConfigTransmissionType { get; set; }
+
     } 
 }

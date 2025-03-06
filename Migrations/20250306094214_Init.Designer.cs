@@ -11,7 +11,7 @@ using VroomWiki.Data;
 namespace VroomWiki.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250306093759_Init")]
+    [Migration("20250306094214_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -234,8 +234,16 @@ namespace VroomWiki.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Color_Id");
+
+                    b.HasIndex("Engine_Id");
+
                     b.HasIndex("Id")
                         .IsUnique();
+
+                    b.HasIndex("TransmissionType_Id");
+
+                    b.HasIndex("User_Id");
 
                     b.ToTable("Configuration");
 
@@ -585,7 +593,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 3, 6, 10, 37, 58, 135, DateTimeKind.Local).AddTicks(5316),
+                            CreatedAt = new DateTime(2025, 3, 6, 10, 42, 13, 136, DateTimeKind.Local).AddTicks(5432),
                             Email = "admin@admin.com",
                             PasswordHash = "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=",
                             Username = "admin"
@@ -593,7 +601,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 3, 6, 10, 37, 58, 204, DateTimeKind.Local).AddTicks(7232),
+                            CreatedAt = new DateTime(2025, 3, 6, 10, 42, 13, 213, DateTimeKind.Local).AddTicks(6352),
                             Email = "nagybela01@gmail.com",
                             PasswordHash = "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=",
                             Username = "nbela007"
@@ -601,7 +609,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 3, 6, 10, 37, 58, 273, DateTimeKind.Local).AddTicks(9874),
+                            CreatedAt = new DateTime(2025, 3, 6, 10, 42, 13, 283, DateTimeKind.Local).AddTicks(9513),
                             Email = "kissjanos@gmail.com",
                             PasswordHash = "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=",
                             Username = "kjanos"
@@ -685,6 +693,41 @@ namespace VroomWiki.Migrations
                             RoleId = 1,
                             UserId = 1
                         });
+                });
+
+            modelBuilder.Entity("Models.Configuration", b =>
+                {
+                    b.HasOne("Models.ConfigColor", "ConfigColor")
+                        .WithMany()
+                        .HasForeignKey("Color_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Models.ConfigEngine", "ConfigEngine")
+                        .WithMany()
+                        .HasForeignKey("Engine_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Models.ConfigTransmissionType", "ConfigTransmissionType")
+                        .WithMany()
+                        .HasForeignKey("TransmissionType_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ConfigColor");
+
+                    b.Navigation("ConfigEngine");
+
+                    b.Navigation("ConfigTransmissionType");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("VroomWiki.Models.SessionModel", b =>

@@ -33,25 +33,6 @@ namespace VroomWiki.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Configuration",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    User_Id = table.Column<int>(type: "int", nullable: false),
-                    ConfigName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Engine_Id = table.Column<int>(type: "int", nullable: false),
-                    Color_Id = table.Column<int>(type: "int", nullable: false),
-                    TransmissionType_Id = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Configuration", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Engine",
                 columns: table => new
                 {
@@ -196,6 +177,49 @@ namespace VroomWiki.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Configuration",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    User_Id = table.Column<int>(type: "int", nullable: false),
+                    ConfigName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Engine_Id = table.Column<int>(type: "int", nullable: false),
+                    Color_Id = table.Column<int>(type: "int", nullable: false),
+                    TransmissionType_Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Configuration", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Configuration_Color_Color_Id",
+                        column: x => x.Color_Id,
+                        principalTable: "Color",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Configuration_Engine_Engine_Id",
+                        column: x => x.Engine_Id,
+                        principalTable: "Engine",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Configuration_TransmissionTypes_TransmissionType_Id",
+                        column: x => x.TransmissionType_Id,
+                        principalTable: "TransmissionTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Configuration_User_User_Id",
+                        column: x => x.User_Id,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Sessions",
                 columns: table => new
                 {
@@ -254,11 +278,6 @@ namespace VroomWiki.Migrations
                     { 2, "Kék" },
                     { 3, "Zöld" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Configuration",
-                columns: new[] { "Id", "Color_Id", "ConfigName", "Engine_Id", "TransmissionType_Id", "User_Id" },
-                values: new object[] { 1, 1, "Álom", 1, 1, 2 });
 
             migrationBuilder.InsertData(
                 table: "Engine",
@@ -339,10 +358,15 @@ namespace VroomWiki.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "PasswordHash", "Username" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 3, 6, 10, 37, 58, 135, DateTimeKind.Local).AddTicks(5316), "admin@admin.com", "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=", "admin" },
-                    { 2, new DateTime(2025, 3, 6, 10, 37, 58, 204, DateTimeKind.Local).AddTicks(7232), "nagybela01@gmail.com", "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=", "nbela007" },
-                    { 3, new DateTime(2025, 3, 6, 10, 37, 58, 273, DateTimeKind.Local).AddTicks(9874), "kissjanos@gmail.com", "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=", "kjanos" }
+                    { 1, new DateTime(2025, 3, 6, 10, 42, 13, 136, DateTimeKind.Local).AddTicks(5432), "admin@admin.com", "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=", "admin" },
+                    { 2, new DateTime(2025, 3, 6, 10, 42, 13, 213, DateTimeKind.Local).AddTicks(6352), "nagybela01@gmail.com", "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=", "nbela007" },
+                    { 3, new DateTime(2025, 3, 6, 10, 42, 13, 283, DateTimeKind.Local).AddTicks(9513), "kissjanos@gmail.com", "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=", "kjanos" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Configuration",
+                columns: new[] { "Id", "Color_Id", "ConfigName", "Engine_Id", "TransmissionType_Id", "User_Id" },
+                values: new object[] { 1, 1, "Álom", 1, 1, 2 });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
@@ -356,10 +380,30 @@ namespace VroomWiki.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Configuration_Color_Id",
+                table: "Configuration",
+                column: "Color_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Configuration_Engine_Id",
+                table: "Configuration",
+                column: "Engine_Id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Configuration_Id",
                 table: "Configuration",
                 column: "Id",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Configuration_TransmissionType_Id",
+                table: "Configuration",
+                column: "TransmissionType_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Configuration_User_Id",
+                table: "Configuration",
+                column: "User_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Engine_Id",
@@ -417,13 +461,7 @@ namespace VroomWiki.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Color");
-
-            migrationBuilder.DropTable(
                 name: "Configuration");
-
-            migrationBuilder.DropTable(
-                name: "Engine");
 
             migrationBuilder.DropTable(
                 name: "MainPage");
@@ -438,10 +476,16 @@ namespace VroomWiki.Migrations
                 name: "Sessions");
 
             migrationBuilder.DropTable(
-                name: "TransmissionTypes");
+                name: "UserRoles");
 
             migrationBuilder.DropTable(
-                name: "UserRoles");
+                name: "Color");
+
+            migrationBuilder.DropTable(
+                name: "Engine");
+
+            migrationBuilder.DropTable(
+                name: "TransmissionTypes");
 
             migrationBuilder.DropTable(
                 name: "RoleModel");

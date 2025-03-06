@@ -53,64 +53,6 @@ namespace VroomWiki.Data
             var users = LoadUsersFromJson();
             var configurations = LoadConfigurationsFromJson();
 
-
-            //foreach (var engine in configEngines)
-            //{
-            //    if (engine.Id == 0)
-            //    {
-            //        engine.Id = GetUniqueId();
-            //    }
-            //}
-            //foreach (var color in configColor)
-            //{
-            //    if (color.Id == 0)
-            //    {
-            //        color.Id = GetUniqueId();
-            //    }
-            //}
-            //foreach (var transType in configTransType)
-            //{
-            //    if (transType.Id == 0)
-            //    {
-            //        transType.Id = GetUniqueId();
-            //    }
-            //}
-            //foreach (var mainP in mainPage)
-            //{
-            //    if (mainP.Id == 0)
-            //    {
-            //        mainP.Id = GetUniqueId();
-            //    }
-            //}
-            //foreach (var pastM in pastModel)
-            //{
-            //    if (pastM.Id == 0)
-            //    {
-            //        pastM.Id = GetUniqueId();
-            //    }
-            //}
-            //foreach (var sale in sales)
-            //{
-            //    if (sale.Id == 0)
-            //    {
-            //        sale.Id = GetUniqueId();
-            //    }
-            //}
-            //foreach (var user in users)
-            //{
-            //    if (user.Id == 0)
-            //    {
-            //        user.Id = GetUniqueId();
-            //    }
-            //}
-            //foreach (var config in configurations)
-            //{
-            //    if (config.Id == 0)
-            //    {
-            //        config.Id = GetUniqueId();
-            //    }
-            //}
-
             modelBuilder.Entity<ConfigEngine>().HasData(configEngines);
             modelBuilder.Entity<ConfigColor>().HasData(configColor);
             modelBuilder.Entity<ConfigTransmissionType>().HasData(configTransType);
@@ -190,21 +132,5 @@ namespace VroomWiki.Data
             return JsonConvert.DeserializeObject<List<Configuration>>(json);
         }
 
-
-
-        private static int _currentId = 1; // Kezdőérték 1
-        private const int MaxId = 10;    // Maximális érték (itt például 1000)
-
-        private int GetUniqueId()
-        {
-            if (_currentId > MaxId)
-            {
-                // Ha elérjük a maximális értéket, kezelhetjük ezt valamilyen módon
-                // Például, visszaállíthatjuk 1-re vagy más logikát alkalmazhatunk
-                _currentId = 1; // Visszaállítjuk 1-re, ha elérjük a maximális ID-t
-            }
-
-            return _currentId++;
-        }
     }
 }
