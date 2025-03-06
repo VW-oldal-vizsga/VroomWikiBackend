@@ -69,11 +69,14 @@ namespace VroomWiki.Repositories
         {
             if (user == null)
                 throw new Exception("User must be provided");
+
             user.PasswordHash = user.Password.HashPassword();
+
             appContext.Set<User>().Add(user);
+            appContext.SaveChanges();
             appContext.Set<UserRoleModel>().Add(new UserRoleModel() { UserId = user.Id, RoleId = 2 });
             appContext.SaveChanges();
-            return Login(new LoginModel() { Email = user.Email, Password = user.Password });
+            return Login(new LoginModel() {Username=user.Username, Email = user.Email, Password = user.Password });
         }
 
         public void Logout(string? tokenString)

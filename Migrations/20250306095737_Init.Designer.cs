@@ -11,7 +11,7 @@ using VroomWiki.Data;
 namespace VroomWiki.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250306094214_Init")]
+    [Migration("20250306095737_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -593,7 +593,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 3, 6, 10, 42, 13, 136, DateTimeKind.Local).AddTicks(5432),
+                            CreatedAt = new DateTime(2025, 3, 6, 10, 57, 36, 144, DateTimeKind.Local).AddTicks(2134),
                             Email = "admin@admin.com",
                             PasswordHash = "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=",
                             Username = "admin"
@@ -601,7 +601,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 3, 6, 10, 42, 13, 213, DateTimeKind.Local).AddTicks(6352),
+                            CreatedAt = new DateTime(2025, 3, 6, 10, 57, 36, 234, DateTimeKind.Local).AddTicks(8795),
                             Email = "nagybela01@gmail.com",
                             PasswordHash = "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=",
                             Username = "nbela007"
@@ -609,7 +609,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 3, 6, 10, 42, 13, 283, DateTimeKind.Local).AddTicks(9513),
+                            CreatedAt = new DateTime(2025, 3, 6, 10, 57, 36, 306, DateTimeKind.Local).AddTicks(2918),
                             Email = "kissjanos@gmail.com",
                             PasswordHash = "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=",
                             Username = "kjanos"
@@ -692,6 +692,18 @@ namespace VroomWiki.Migrations
                             Id = 1,
                             RoleId = 1,
                             UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoleId = 2,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleId = 2,
+                            UserId = 3
                         });
                 });
 

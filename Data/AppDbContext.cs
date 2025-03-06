@@ -75,7 +75,9 @@ namespace VroomWiki.Data
                 );
 
             modelBuilder.Entity<UserRoleModel>().HasData(
-                    new {Id=1, UserId=1,RoleId=1}
+                    new {Id=1, UserId=1,RoleId=1},
+                    new {Id=2, UserId=2,RoleId=2},
+                    new {Id=3, UserId=3,RoleId=2}
                 );
 
             modelBuilder.Entity<Configuration>().HasData(configurations);
