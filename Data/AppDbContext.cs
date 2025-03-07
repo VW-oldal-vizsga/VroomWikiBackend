@@ -1,4 +1,4 @@
-﻿using Backend_Webshop.Extensions;
+﻿using VroomWiki.Extensions;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Models;

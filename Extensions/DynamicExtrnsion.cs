@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Backend_Webshop.Extensions
+namespace VroomWiki.Extensions
 {
     public static class DynamicExtension
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 
-namespace Backend_Webshop.Authentication
+namespace VroomWiki.Authentication
 {
     public static class ServiceCollectionAuthExtensions
     {

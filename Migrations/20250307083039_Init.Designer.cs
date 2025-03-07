@@ -11,7 +11,7 @@ using VroomWiki.Data;
 namespace VroomWiki.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250306104816_Init")]
+    [Migration("20250307083039_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -593,7 +593,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 3, 6, 11, 48, 16, 277, DateTimeKind.Local).AddTicks(7845),
+                            CreatedAt = new DateTime(2025, 3, 7, 9, 30, 38, 78, DateTimeKind.Local).AddTicks(7316),
                             Email = "admin@admin.com",
                             PasswordHash = "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=",
                             Username = "admin"
@@ -601,7 +601,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 3, 6, 11, 48, 16, 286, DateTimeKind.Local).AddTicks(76),
+                            CreatedAt = new DateTime(2025, 3, 7, 9, 30, 38, 161, DateTimeKind.Local).AddTicks(7966),
                             Email = "nagybela01@gmail.com",
                             PasswordHash = "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=",
                             Username = "nbela007"
@@ -609,7 +609,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 3, 6, 11, 48, 16, 294, DateTimeKind.Local).AddTicks(1393),
+                            CreatedAt = new DateTime(2025, 3, 7, 9, 30, 38, 243, DateTimeKind.Local).AddTicks(5543),
                             Email = "kissjanos@gmail.com",
                             PasswordHash = "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=",
                             Username = "kjanos"

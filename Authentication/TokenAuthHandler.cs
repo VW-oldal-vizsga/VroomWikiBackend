@@ -9,7 +9,7 @@ using System.Text.Json;
 using VroomWiki.Data;
 using VroomWiki.Models;
 
-namespace Backend_Webshop.Authentication
+namespace VroomWiki.Authentication
 {
     public class TokenAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {

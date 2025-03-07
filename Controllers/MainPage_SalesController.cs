@@ -1,4 +1,4 @@
-﻿using Backend_Webshop.Controllers;
+﻿using VroomWiki.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;

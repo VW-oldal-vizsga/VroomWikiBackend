@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Backend_Webshop.Controllers
+namespace VroomWiki.Controllers
 {
     public static class ControllerExtension
     {

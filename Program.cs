@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+using VroomWiki.Authentication;
 using VroomWiki.Data;
 using VroomWiki.Repositories;
 
@@ -18,7 +18,7 @@ namespace VroomWiki
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-
+            builder.Services.AddTokenAuthentication(builder.Configuration);
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -41,6 +41,7 @@ namespace VroomWiki
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

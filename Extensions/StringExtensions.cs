@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Backend_Webshop.Extensions
+namespace VroomWiki.Extensions
 {
     public static class StringExtensions
     {
