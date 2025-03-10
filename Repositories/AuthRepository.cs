@@ -26,15 +26,15 @@ namespace VroomWiki.Repositories
         public dynamic Login(LoginModel? loginModel) 
         {
             string? username = loginModel?.Username.ToString();
-            string? email = loginModel?.Email.ToString();
+            
             string? password = loginModel?.Password.ToString();
 
-            if (loginModel  == null || email== null || password == null)
+            if (loginModel  == null  || password == null)
             {
                 throw new Exception("Email and password must be provided");
             }
 
-            var user = appContext.Set<User>().SingleOrDefault(x => x.Email == email);
+            var user = appContext.Set<User>().SingleOrDefault(x => x.Username == username);
             if (user == null) {return null;}
             if (user.PasswordHash != password.HashPassword())
             {

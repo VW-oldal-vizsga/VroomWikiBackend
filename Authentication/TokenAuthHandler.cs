@@ -13,7 +13,7 @@ namespace VroomWiki.Authentication
 {
     public class TokenAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        private double expirationInMinutes = 5;
+        private double expirationInMinutes = 60;
         private readonly IConfiguration configuration;
         private AppDbContext appContext;
 

@@ -358,9 +358,9 @@ namespace VroomWiki.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "PasswordHash", "Username" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 3, 7, 9, 30, 38, 78, DateTimeKind.Local).AddTicks(7316), "admin@admin.com", "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=", "admin" },
-                    { 2, new DateTime(2025, 3, 7, 9, 30, 38, 161, DateTimeKind.Local).AddTicks(7966), "nagybela01@gmail.com", "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=", "nbela007" },
-                    { 3, new DateTime(2025, 3, 7, 9, 30, 38, 243, DateTimeKind.Local).AddTicks(5543), "kissjanos@gmail.com", "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=", "kjanos" }
+                    { 1, new DateTime(2025, 3, 10, 12, 45, 40, 792, DateTimeKind.Local).AddTicks(7134), "admin@admin.com", "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=", "admin" },
+                    { 2, new DateTime(2025, 3, 10, 12, 45, 40, 803, DateTimeKind.Local).AddTicks(4400), "nagybela01@gmail.com", "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=", "nbela007" },
+                    { 3, new DateTime(2025, 3, 10, 12, 45, 40, 813, DateTimeKind.Local).AddTicks(4940), "kissjanos@gmail.com", "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=", "kjanos" }
                 });
 
             migrationBuilder.InsertData(
