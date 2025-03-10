@@ -29,6 +29,16 @@ namespace VroomWiki
             builder.Services.AddScoped<MainPage_SalesRepository>();
             builder.Services.AddScoped<ConfiguratorRepository>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200") // Angular app URL-je
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                    });
+            });
 
             var app = builder.Build();
 
