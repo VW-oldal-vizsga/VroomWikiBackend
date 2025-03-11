@@ -39,7 +39,8 @@ namespace VroomWiki.Controllers
                     p.Founded,
                     p.Headquarters,
                     p.Products,
-                    p.Profit
+                    p.Profit,
+                    p.ImageBase64
                 }));
             });
         }

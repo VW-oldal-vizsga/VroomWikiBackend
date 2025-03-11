@@ -31,5 +31,6 @@ namespace Models
         public string? Products { get; set; }
         public int? Employees { get; set; }
         public string? Profit { get; set; }
+        public string? ImageBase64 { get; set; }
     }
 }
