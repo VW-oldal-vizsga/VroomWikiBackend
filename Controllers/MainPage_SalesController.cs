@@ -31,7 +31,6 @@ namespace VroomWiki.Controllers
                 return Ok(mainPage_SalesRepository.GetAllMp().Select(p => new
                 {
                     p.Id,
-                    p.History,
                     p.Description,
                     p.Owner,
                     p.Employees,
@@ -44,6 +43,38 @@ namespace VroomWiki.Controllers
                 }));
             });
         }
+
+        [HttpGet("mainpage/history")]
+        public IActionResult GetAllMpHistory()
+        {
+            return this.Run(() =>
+            {
+                return Ok(mainPage_SalesRepository.GetAllMpHistory().Select(p => new
+                {
+                    p.Id,
+                    p.Title,
+                    p.History
+                    
+                }));
+            });
+        }
+
+
+        [HttpGet("mainpage/history/{id}")]
+        public IActionResult GetOneMpHistory(int id)
+        {
+            return this.Run(() =>
+            {
+                return Ok(mainPage_SalesRepository.GetOneMpHistory(id).Select(p => new
+                {
+                    p.Id,
+                    p.Title,
+                    p.History
+
+                }));
+            });
+        }
+
         // GET: api/<MainPage_SalesController>
         [HttpGet("sales")]
         public IActionResult GetAllSale()

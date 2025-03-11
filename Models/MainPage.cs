@@ -12,7 +12,6 @@ namespace Models
         [Key]
         public required int Id { get; set; }
 
-        
         public string? Description { get; set; }
 
         public required int? Founded { get; set; }
@@ -31,10 +30,6 @@ namespace Models
 
         public string? Products { get; set; }
         public int? Employees { get; set; }
-
-        
-        public string? History { get; set; }
-
         public string? Profit { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Models;
 using Newtonsoft.Json;
 using VroomWiki.Data;
+using VroomWiki.Models;
+
 
 namespace VroomWiki.Repositories
 {
@@ -15,6 +17,15 @@ namespace VroomWiki.Repositories
         public IEnumerable<MainPage> GetAllMp()
         {
             return context.Set<MainPage>();
+        }
+        public IEnumerable<MainPageHistory> GetAllMpHistory()
+        {
+            return context.Set<MainPageHistory>();
+        }
+
+        public IEnumerable<MainPageHistory> GetOneMpHistory(int id)
+        {
+            return context.Set<MainPageHistory>().Where(p => p.Id == id);
         }
 
         public IEnumerable<Sale> GetAllSale()

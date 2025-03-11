@@ -72,14 +72,29 @@ namespace VroomWiki.Migrations
                     Products = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Employees = table.Column<int>(type: "int", nullable: true),
-                    History = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Profit = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MainPage", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "MainPageHistory",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    History = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MainPageHistory", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -296,8 +311,21 @@ namespace VroomWiki.Migrations
 
             migrationBuilder.InsertData(
                 table: "MainPage",
-                columns: new[] { "Id", "Chairman", "Description", "Employees", "Factories", "Founded", "Headquarters", "History", "Owner", "Products", "Profit" },
-                values: new object[] { 1, "Thomas Schäfer", "A Volkswagen, rövidítve VW , egy német autómárka, amelyet 1937-ben alapították a Német Munkásfront (Deutsche Arbeitsfront) felkérésére, azzal a céllal, hogy beindítsa a tömeges motorizációt az akkori Harmadik Birodalomban. Székhelye az alsó-szászországi Wolfsburg városában található. A Volkswagen az ugyanilyen nevű konszern zászlóshajójának számít. A konszern 2016-ban és 2017-ben a világ legnagyobb autógyártójának számított", 0, "Bratislava, Wolfsburg, Dresten, Emden", 1937, "Wolfsburg", null, "Volkswagen", "", "322284000000" });
+                columns: new[] { "Id", "Chairman", "Description", "Employees", "Factories", "Founded", "Headquarters", "Owner", "Products", "Profit" },
+                values: new object[] { 1, "Thomas Schäfer", "A Volkswagen, rövidítve VW , egy német autómárka, amelyet 1937-ben alapították a Német Munkásfront (Deutsche Arbeitsfront) felkérésére, azzal a céllal, hogy beindítsa a tömeges motorizációt az akkori Harmadik Birodalomban. Székhelye az alsó-szászországi Wolfsburg városában található. A Volkswagen az ugyanilyen nevű konszern zászlóshajójának számít. A konszern 2016-ban és 2017-ben a világ legnagyobb autógyártójának számított", 672800, "Bratislava, Wolfsburg, Dresten, Emden", 1937, "Wolfsburg", "Volkswagen", "", "322284000000" });
+
+            migrationBuilder.InsertData(
+                table: "MainPageHistory",
+                columns: new[] { "Id", "History", "Title" },
+                values: new object[,]
+                {
+                    { 1, "1937: A Volkswagen története 1937-ben kezdődött, amikor a Volkswagenwerk GmbH nevű céget alapították Németországban. A céget a Német Munkafront (Deutsche Arbeitsfront) hozta létre, és célja az volt, hogy egy olcsó, elérhető áron vásárolható autót készítsenek a német munkások számára. 1938: A híres Volkswagen Beetle (Bogár) első prototípusa bemutatásra került. Az autó tervezését Ferdinand Porsche irányította, és a cél az volt, hogy egy mindenki számára elérhető, megbízható járművet készítsenek. 1940-es évek: A második világháború kitörése után a Volkswagen gyárat szinte teljesen átalakították katonai járművek és alkatrészek gyártására, így a civil termelés szünetelt. A háború végére a gyár szinte teljesen tönkrement.", "1937-1945: Alapítás és a háború hatásai" },
+                    { 2, "1945: A háború végén, a szövetségesek megszállása alatt a Volkswagen gyárat brit irányítás alá vonták. Az új vezetés célja a gyár újjáélesztése volt. 1949: Az amerikai Volkswagen Import, Inc. elindította a Volkswagen Beetle importálását az Egyesült Államokba, és hatalmas sikert arattak vele.1950: Az autó elérte a 1 milliós gyártott példányt, ami nagy mérföldkő volt a vállalat számára. A Bogár népszerűsége gyorsan nőtt, és hamarosan a világ egyik legismertebb autójává vált.", "1945-1950: Újjáéledés és a Bogár sikere" },
+                    { 3, "1954: A Volkswagen elkezdte a Transporter (más néven Microbus) gyártását, amely szintén nagy siker lett, különösen a fiatalok körében. 1960-as évek: A Volkswagen az Egyesült Államokban egyre erősebben jelen volt, és elkezdődött az autók modernizálása is. A cég újabb modellekkel jelent meg, mint például a Volkswagen Type 3 és a Volkswagen Type 4. 1965: A Volkswagen megvásárolta az Auto Union-t, és ezzel megszerezte a Audi márkát, ami fontos lépés volt a vállalat terjeszkedésében.", "1950-1970: A globális terjeszkedés és az innovációk" },
+                    { 4, "1970-es évek: A Volkswagen megkezdte az újabb modellcsaládok, például a Golf és a Passat gyártását. A Golf bemutatása (1974) egy mérföldkő volt a márka történetében, mivel a modellek a globális autópiacon is rendkívüli sikernek örvendtek. 1980-as évek: A Volkswagen elkezdett egyre több új technológiai fejlesztést alkalmazni a járművein, mint például a turbofeltöltős motorok és az elektronikus vezérlőrendszerek.", "1970-1990: Új modellek, és a dizájn forradalom" },
+                    { 5, "1990-es évek: A cég elindította az Audi, SEAT, Skoda és Bentley márkák feletti irányítást. Emellett folytatták az új modellek piacra dobását, mint például a Volkswagen Polo és a Volkswagen Jetta. 2000-es évek: A Volkswagen erőteljesen belépett a prémium szegmensbe a Volkswagen Phaeton és a Volkswagen Touareg modellekkel. A cég elkezdett környezetbarátabb autók fejlesztésébe is, és elindították az EcoFuel és TDI dízelmotoros autókat. 2009: A Volkswagen elérte a 200 milliós gyártott autót. Ekkor már az egyik legnagyobb autógyártóvá vált a világon.", "1990-2010: Technológiai fejlődés és környezettudatos változások" },
+                    { 6, "2015: A Volkswagen komoly botrányba keveredett, miután kiderült, hogy a vállalat manipulálta a dízelmotorok kibocsátási tesztjeit. Ez a dízelbotrány komoly pénzügyi és jogi következményekkel járt a cég számára. 2016: A Volkswagen bejelentette, hogy komoly erőfeszítéseket tesz az elektromos autók fejlesztésére. Ennek eredményeként létrejött a ID. sorozat, amely az elektromos mobilitás irányába terelte a márkát. 2020-as évek: A Volkswagen tovább erősítette jelenlétét az elektromos autópiacon az ID.3, ID.4 és más elektromos modellek bevezetésével. A cég célja, hogy 2030-ra az autóinak egy jelentős része elektromos meghajtású legyen.", "2010-2025: A dízelbotrány és az elektromos jövő" }
+                });
 
             migrationBuilder.InsertData(
                 table: "PastModel",
@@ -358,9 +386,9 @@ namespace VroomWiki.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "PasswordHash", "Username" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 3, 11, 8, 57, 42, 611, DateTimeKind.Local).AddTicks(6554), "admin@admin.com", "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=", "admin" },
-                    { 2, new DateTime(2025, 3, 11, 8, 57, 42, 674, DateTimeKind.Local).AddTicks(4048), "nagybela01@gmail.com", "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=", "nbela007" },
-                    { 3, new DateTime(2025, 3, 11, 8, 57, 42, 742, DateTimeKind.Local).AddTicks(2357), "kissjanos@gmail.com", "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=", "kjanos" }
+                    { 1, new DateTime(2025, 3, 11, 11, 4, 52, 971, DateTimeKind.Local).AddTicks(4775), "admin@admin.com", "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=", "admin" },
+                    { 2, new DateTime(2025, 3, 11, 11, 4, 53, 53, DateTimeKind.Local).AddTicks(1898), "nagybela01@gmail.com", "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=", "nbela007" },
+                    { 3, new DateTime(2025, 3, 11, 11, 4, 53, 132, DateTimeKind.Local).AddTicks(9114), "kissjanos@gmail.com", "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=", "kjanos" }
                 });
 
             migrationBuilder.InsertData(
@@ -423,6 +451,12 @@ namespace VroomWiki.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_MainPageHistory_Id",
+                table: "MainPageHistory",
+                column: "Id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PastModel_Name",
                 table: "PastModel",
                 column: "Name",
@@ -470,6 +504,9 @@ namespace VroomWiki.Migrations
 
             migrationBuilder.DropTable(
                 name: "MainPage");
+
+            migrationBuilder.DropTable(
+                name: "MainPageHistory");
 
             migrationBuilder.DropTable(
                 name: "PastModel");

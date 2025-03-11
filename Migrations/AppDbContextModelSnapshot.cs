@@ -283,9 +283,6 @@ namespace VroomWiki.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)");
 
-                    b.Property<string>("History")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Owner")
                         .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
@@ -309,7 +306,7 @@ namespace VroomWiki.Migrations
                             Id = 1,
                             Chairman = "Thomas Schäfer",
                             Description = "A Volkswagen, rövidítve VW , egy német autómárka, amelyet 1937-ben alapították a Német Munkásfront (Deutsche Arbeitsfront) felkérésére, azzal a céllal, hogy beindítsa a tömeges motorizációt az akkori Harmadik Birodalomban. Székhelye az alsó-szászországi Wolfsburg városában található. A Volkswagen az ugyanilyen nevű konszern zászlóshajójának számít. A konszern 2016-ban és 2017-ben a világ legnagyobb autógyártójának számított",
-                            Employees = 0,
+                            Employees = 672800,
                             Factories = "Bratislava, Wolfsburg, Dresten, Emden",
                             Founded = 1937,
                             Headquarters = "Wolfsburg",
@@ -590,7 +587,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 3, 11, 8, 57, 42, 611, DateTimeKind.Local).AddTicks(6554),
+                            CreatedAt = new DateTime(2025, 3, 11, 11, 4, 52, 971, DateTimeKind.Local).AddTicks(4775),
                             Email = "admin@admin.com",
                             PasswordHash = "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=",
                             Username = "admin"
@@ -598,7 +595,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 3, 11, 8, 57, 42, 674, DateTimeKind.Local).AddTicks(4048),
+                            CreatedAt = new DateTime(2025, 3, 11, 11, 4, 53, 53, DateTimeKind.Local).AddTicks(1898),
                             Email = "nagybela01@gmail.com",
                             PasswordHash = "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=",
                             Username = "nbela007"
@@ -606,10 +603,68 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 3, 11, 8, 57, 42, 742, DateTimeKind.Local).AddTicks(2357),
+                            CreatedAt = new DateTime(2025, 3, 11, 11, 4, 53, 132, DateTimeKind.Local).AddTicks(9114),
                             Email = "kissjanos@gmail.com",
                             PasswordHash = "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=",
                             Username = "kjanos"
+                        });
+                });
+
+            modelBuilder.Entity("VroomWiki.Models.MainPageHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("History")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("MainPageHistory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            History = "1937: A Volkswagen története 1937-ben kezdődött, amikor a Volkswagenwerk GmbH nevű céget alapították Németországban. A céget a Német Munkafront (Deutsche Arbeitsfront) hozta létre, és célja az volt, hogy egy olcsó, elérhető áron vásárolható autót készítsenek a német munkások számára. 1938: A híres Volkswagen Beetle (Bogár) első prototípusa bemutatásra került. Az autó tervezését Ferdinand Porsche irányította, és a cél az volt, hogy egy mindenki számára elérhető, megbízható járművet készítsenek. 1940-es évek: A második világháború kitörése után a Volkswagen gyárat szinte teljesen átalakították katonai járművek és alkatrészek gyártására, így a civil termelés szünetelt. A háború végére a gyár szinte teljesen tönkrement.",
+                            Title = "1937-1945: Alapítás és a háború hatásai"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            History = "1945: A háború végén, a szövetségesek megszállása alatt a Volkswagen gyárat brit irányítás alá vonták. Az új vezetés célja a gyár újjáélesztése volt. 1949: Az amerikai Volkswagen Import, Inc. elindította a Volkswagen Beetle importálását az Egyesült Államokba, és hatalmas sikert arattak vele.1950: Az autó elérte a 1 milliós gyártott példányt, ami nagy mérföldkő volt a vállalat számára. A Bogár népszerűsége gyorsan nőtt, és hamarosan a világ egyik legismertebb autójává vált.",
+                            Title = "1945-1950: Újjáéledés és a Bogár sikere"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            History = "1954: A Volkswagen elkezdte a Transporter (más néven Microbus) gyártását, amely szintén nagy siker lett, különösen a fiatalok körében. 1960-as évek: A Volkswagen az Egyesült Államokban egyre erősebben jelen volt, és elkezdődött az autók modernizálása is. A cég újabb modellekkel jelent meg, mint például a Volkswagen Type 3 és a Volkswagen Type 4. 1965: A Volkswagen megvásárolta az Auto Union-t, és ezzel megszerezte a Audi márkát, ami fontos lépés volt a vállalat terjeszkedésében.",
+                            Title = "1950-1970: A globális terjeszkedés és az innovációk"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            History = "1970-es évek: A Volkswagen megkezdte az újabb modellcsaládok, például a Golf és a Passat gyártását. A Golf bemutatása (1974) egy mérföldkő volt a márka történetében, mivel a modellek a globális autópiacon is rendkívüli sikernek örvendtek. 1980-as évek: A Volkswagen elkezdett egyre több új technológiai fejlesztést alkalmazni a járművein, mint például a turbofeltöltős motorok és az elektronikus vezérlőrendszerek.",
+                            Title = "1970-1990: Új modellek, és a dizájn forradalom"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            History = "1990-es évek: A cég elindította az Audi, SEAT, Skoda és Bentley márkák feletti irányítást. Emellett folytatták az új modellek piacra dobását, mint például a Volkswagen Polo és a Volkswagen Jetta. 2000-es évek: A Volkswagen erőteljesen belépett a prémium szegmensbe a Volkswagen Phaeton és a Volkswagen Touareg modellekkel. A cég elkezdett környezetbarátabb autók fejlesztésébe is, és elindították az EcoFuel és TDI dízelmotoros autókat. 2009: A Volkswagen elérte a 200 milliós gyártott autót. Ekkor már az egyik legnagyobb autógyártóvá vált a világon.",
+                            Title = "1990-2010: Technológiai fejlődés és környezettudatos változások"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            History = "2015: A Volkswagen komoly botrányba keveredett, miután kiderült, hogy a vállalat manipulálta a dízelmotorok kibocsátási tesztjeit. Ez a dízelbotrány komoly pénzügyi és jogi következményekkel járt a cég számára. 2016: A Volkswagen bejelentette, hogy komoly erőfeszítéseket tesz az elektromos autók fejlesztésére. Ennek eredményeként létrejött a ID. sorozat, amely az elektromos mobilitás irányába terelte a márkát. 2020-as évek: A Volkswagen tovább erősítette jelenlétét az elektromos autópiacon az ID.3, ID.4 és más elektromos modellek bevezetésével. A cég célja, hogy 2030-ra az autóinak egy jelentős része elektromos meghajtású legyen.",
+                            Title = "2010-2025: A dízelbotrány és az elektromos jövő"
                         });
                 });
 

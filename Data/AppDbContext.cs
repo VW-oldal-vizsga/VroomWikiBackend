@@ -18,6 +18,7 @@ namespace VroomWiki.Data
         public DbSet<PastModel> PastModel { get; set; }
         public DbSet<Configuration> Configuration { get; set; }
         public DbSet<MainPage> MainPage { get; set; }
+        public DbSet<MainPageHistory> MainPageHistory { get; set; }
         public DbSet<Sale> Sale { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<ConfigTransmissionType> TransmissionTypes { get; set; }
@@ -35,6 +36,7 @@ namespace VroomWiki.Data
         {
             modelBuilder.Entity<PastModel>().HasIndex(c => c.Name).IsUnique();
             modelBuilder.Entity<MainPage>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<MainPageHistory>().HasIndex(c => c.Id).IsUnique();
             modelBuilder.Entity<Sale>().HasIndex(c => c.Id).IsUnique();
             modelBuilder.Entity<User>().HasIndex(c => c.Id).IsUnique();
             modelBuilder.Entity<ConfigTransmissionType>().HasIndex(c => c.Id).IsUnique();
@@ -48,6 +50,7 @@ namespace VroomWiki.Data
             var configColor = LoadConfigColorFromJson();
             var configTransType = LoadConfigTransTypeFromJson();
             var mainPage = LoadMainPageFromJson();
+            var mainPageHistory = LoadMainPageHistoryFromJson();
             var pastModel = LoadPastModelsFromJson();
             var sales = LoadSalesFromJson();
             var users = LoadUsersFromJson();
@@ -57,6 +60,7 @@ namespace VroomWiki.Data
             modelBuilder.Entity<ConfigColor>().HasData(configColor);
             modelBuilder.Entity<ConfigTransmissionType>().HasData(configTransType);
             modelBuilder.Entity<MainPage>().HasData(mainPage);
+            modelBuilder.Entity<MainPageHistory>().HasData(mainPageHistory);
             modelBuilder.Entity<PastModel>().HasData(pastModel);
             modelBuilder.Entity<Sale>().HasData(sales);
             modelBuilder.Entity<User>().HasData(
@@ -108,6 +112,12 @@ namespace VroomWiki.Data
             // JSON fájl beolvasása
             var json = File.ReadAllText("MainPage.json");
             return JsonConvert.DeserializeObject<List<MainPage>>(json);
+        }
+        private List<MainPageHistory> LoadMainPageHistoryFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("MainPageHistory.json");
+            return JsonConvert.DeserializeObject<List<MainPageHistory>>(json);
         }
         private List<PastModel> LoadPastModelsFromJson()
         {
