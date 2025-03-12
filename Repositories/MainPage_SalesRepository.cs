@@ -38,13 +38,7 @@ namespace VroomWiki.Repositories
             return context.Set<Sale>().Where(p => p.Id == id);
         }
 
-        //public byte[] GetImage(int id)
-        //{
-        //    var mainPage = context.Set<PastModel>().SingleOrDefault(p => p.Id == id);
-        //    if (mainPage == null)
-        //        return null!;
-        //    return Convert.FromBase64String(mainPage.ImageBase64);
-        //}
+       
 
         public Sale AddSale(dynamic sale)
         {
