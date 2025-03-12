@@ -54,7 +54,9 @@ namespace VroomWiki.Controllers
                 {
                     p.Id,
                     p.Title,
-                    p.History
+                    p.History,
+                    p.History2,
+                    p.History3
                     
                 }));
             });
