@@ -591,7 +591,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 3, 11, 11, 15, 9, 452, DateTimeKind.Local).AddTicks(1802),
+                            CreatedAt = new DateTime(2025, 3, 12, 8, 19, 20, 288, DateTimeKind.Local).AddTicks(1549),
                             Email = "admin@admin.com",
                             PasswordHash = "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=",
                             Username = "admin"
@@ -599,7 +599,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 3, 11, 11, 15, 9, 533, DateTimeKind.Local).AddTicks(5670),
+                            CreatedAt = new DateTime(2025, 3, 12, 8, 19, 20, 396, DateTimeKind.Local).AddTicks(515),
                             Email = "nagybela01@gmail.com",
                             PasswordHash = "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=",
                             Username = "nbela007"
@@ -607,7 +607,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 3, 11, 11, 15, 9, 613, DateTimeKind.Local).AddTicks(7695),
+                            CreatedAt = new DateTime(2025, 3, 12, 8, 19, 20, 496, DateTimeKind.Local).AddTicks(7446),
                             Email = "kissjanos@gmail.com",
                             PasswordHash = "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=",
                             Username = "kjanos"

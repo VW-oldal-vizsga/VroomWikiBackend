@@ -51,7 +51,7 @@ namespace VroomWiki
 
             app.UseHttpsRedirection();
 
-            app.UseCors("EnableCORS");
+            app.UseCors("AllowAngularApp");
 
 
             app.UseAuthentication();
