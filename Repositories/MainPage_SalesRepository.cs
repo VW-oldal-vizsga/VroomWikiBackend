@@ -63,5 +63,13 @@ namespace VroomWiki.Repositories
             context.Set<Sale>().Remove(sale);
             context.SaveChanges();
         }
+
+        public byte[] GetImage(int id)
+        {
+            var mainPage = context.Set<MainPage>().SingleOrDefault(p => p.Id == id);
+            if (mainPage == null)
+                return null!;
+            return Convert.FromBase64String(mainPage.ImageBase64);
+        }
     }
 }

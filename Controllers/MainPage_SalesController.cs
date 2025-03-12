@@ -45,6 +45,15 @@ namespace VroomWiki.Controllers
             });
         }
 
+        [HttpGet("image/{id}")]
+        public IActionResult GetImage(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(mainPage_SalesRepository.GetImage(id), "image/jpeg");
+            });
+        }
+
         [HttpGet("mainpage/history")]
         public IActionResult GetAllMpHistory()
         {

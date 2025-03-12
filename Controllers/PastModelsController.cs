@@ -59,6 +59,15 @@ namespace VroomWiki.Controllers
             });
         }
 
+        [HttpGet("image/{id}")]
+        public IActionResult GetImage(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(pastModelsRepository.GetImage(id), "image/jpeg");
+            });
+        }
+
         //POST api/<PastModelsController>
         [HttpPost]
         [Authorize(Roles = "Admin")]
