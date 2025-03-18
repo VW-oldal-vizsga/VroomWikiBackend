@@ -5,7 +5,8 @@
     "horsepower": 115,
     "fuelConsumption": 6,
     "Co2Emission": 136,
-    "fuelType": "Benzin"
+    "fuelType": "Benzin",
+    "price": 100000
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "horsepower": 150,
     "fuelConsumption": 6.1,
     "Co2Emission": 140,
-    "fuelType": "Benzin"
+    "fuelType": "Benzin",
+    "price": 120000
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "horsepower": 150,
     "fuelConsumption": 5.4,
     "Co2Emission": 124,
-    "fuelType": "Benzin(mild) Hybrid"
+    "fuelType": "Benzin(mild) Hybrid",
+    "price": 130000
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "horsepower": 150,
     "fuelConsumption": 4.8,
     "Co2Emission": 128,
-    "fuelType": "Gázolaj"
+    "fuelType": "Gázolaj",
+    "price": 140000
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "horsepower": 150,
     "fuelConsumption": 0.3,
     "Co2Emission": 6,
-    "fuelType": "Kombinált: benzin és elektromotor"
+    "fuelType": "Kombinált: benzin és elektromotor",
+    "price": 150000
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "horsepower": 265,
     "fuelConsumption": 7.5,
     "Co2Emission": 170,
-    "fuelType": "Benzin"
+    "fuelType": "Benzin",
+    "price": 160000
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "horsepower": 300,
     "fuelConsumption": 7.9,
     "Co2Emission": 180,
-    "fuelType": "Benzin"
+    "fuelType": "Benzin",
+    "price": 170000
   },
   {
     "id": 8,
@@ -61,6 +68,7 @@
     "horsepower": 333,
     "fuelConsumption": 8.5,
     "Co2Emission": 192,
-    "fuelType": "Benzin"
+    "fuelType": "Benzin",
+    "price": 180000
   }
 ]

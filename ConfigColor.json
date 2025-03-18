@@ -1,14 +1,27 @@
 [
   {
     "id": 1,
-    "name": "Piros"
+    "name": "Piros",
+    "price": 135000
   },
   {
     "id": 2,
-    "name": "Kék"
+    "name": "Kék",
+    "price": 150000
   },
   {
     "id": 3,
-    "name": "Zöld"
+    "name": "Zöld",
+    "price": 155000
+  },
+  {
+    "id": 4,
+    "name": "Fehér",
+    "price": 130000
+  },
+  {
+    "id": 5,
+    "name": "Szürke",
+    "price": 160000
   }
 ]
