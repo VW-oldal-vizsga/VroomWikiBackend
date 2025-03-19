@@ -7,5 +7,41 @@
     "Color_Id": 1,
     "TransmissionType_Id": 1,
     "price": 1000000
+  },
+  {
+    "id": 2,
+    "User_Id": 1,
+    "ConfigName": "Golf R-Line",
+    "Engine_Id": 3,
+    "Color_Id": 4,
+    "TransmissionType_Id": 2,
+    "price": 15217729
+  },
+  {
+    "id": 3,
+    "User_Id": 1,
+    "ConfigName": "Golf GTI",
+    "Engine_Id": 6,
+    "Color_Id": 2,
+    "TransmissionType_Id": 2,
+    "price": 16263110
+  },
+  {
+    "id": 4,
+    "User_Id": 1,
+    "ConfigName": "Golf GTE",
+    "Engine_Id": 5,
+    "Color_Id": 1,
+    "TransmissionType_Id": 3,
+    "price": 17026810
+  },
+  {
+    "id": 5,
+    "User_Id": 1,
+    "ConfigName": "Golf GTI Clubsport",
+    "Engine_Id": 7,
+    "Color_Id": 1,
+    "TransmissionType_Id": 2,
+    "price": 18482610
   }
 ]
