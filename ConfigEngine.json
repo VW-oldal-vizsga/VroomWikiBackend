@@ -6,7 +6,7 @@
     "fuelConsumption": 6,
     "Co2Emission": 136,
     "fuelType": "Benzin",
-    "price": 100000
+    "price": 5800000
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "fuelConsumption": 6.1,
     "Co2Emission": 140,
     "fuelType": "Benzin",
-    "price": 120000
+    "price": 6200000
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "fuelConsumption": 5.4,
     "Co2Emission": 124,
     "fuelType": "Benzin(mild) Hybrid",
-    "price": 130000
+    "price": 7200000
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "fuelConsumption": 4.8,
     "Co2Emission": 128,
     "fuelType": "Gázolaj",
-    "price": 140000
+    "price": 7800000
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "fuelConsumption": 0.3,
     "Co2Emission": 6,
     "fuelType": "Kombinált: benzin és elektromotor",
-    "price": 150000
+    "price": 7500000
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "fuelConsumption": 7.5,
     "Co2Emission": 170,
     "fuelType": "Benzin",
-    "price": 160000
+    "price": 8800000
   },
   {
     "id": 7,
@@ -60,7 +60,7 @@
     "fuelConsumption": 7.9,
     "Co2Emission": 180,
     "fuelType": "Benzin",
-    "price": 170000
+    "price": 9500000
   },
   {
     "id": 8,
@@ -69,6 +69,6 @@
     "fuelConsumption": 8.5,
     "Co2Emission": 192,
     "fuelType": "Benzin",
-    "price": 180000
+    "price": 10500000
   }
 ]
