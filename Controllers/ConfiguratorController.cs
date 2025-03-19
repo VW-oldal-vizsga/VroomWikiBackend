@@ -35,6 +35,7 @@ namespace VroomWiki.Controllers
                     p.TransmissionType_Id,
                     p.ConfigName,
                     p.User_Id,
+                    p.Price
                 }));
             });
         }
@@ -52,6 +53,7 @@ namespace VroomWiki.Controllers
                     p.TransmissionType_Id,
                     p.ConfigName,
                     p.User_Id,
+                    p.Price
                 }));
             });
         }
@@ -69,6 +71,7 @@ namespace VroomWiki.Controllers
                 {
                     p.Id,
                     p.Name,
+                    p.Price
                 }));
             });
         }
@@ -83,6 +86,7 @@ namespace VroomWiki.Controllers
                 {
                     p.Id,
                     p.Name,
+                    p.Price
                 }));
             });
         }
@@ -102,6 +106,7 @@ namespace VroomWiki.Controllers
                     p.FuelConsumption,
                     p.Co2Emission,
                     p.FuelType,
+                    p.Price
                 }));
             });
         }
@@ -120,6 +125,7 @@ namespace VroomWiki.Controllers
                     p.FuelConsumption,
                     p.Co2Emission,
                     p.FuelType,
+                    p.Price
                 }));
             });
         }
@@ -136,6 +142,7 @@ namespace VroomWiki.Controllers
                     p.Id,
                     p.Name,
                     p.WheelDrive,
+                    p.Price
                 }));
             });
         }
@@ -150,6 +157,7 @@ namespace VroomWiki.Controllers
                     p.Id,
                     p.Name,
                     p.WheelDrive,
+                    p.Price
                 }));
             });
         }

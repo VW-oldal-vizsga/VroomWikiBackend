@@ -17,5 +17,7 @@ namespace Models
 
         [StringLength(40)]
         public required string? WheelDrive { get; set; }
+        public int Price { get; set; }
+
     }
 }

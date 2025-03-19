@@ -3,25 +3,25 @@
     "id": 1,
     "name": "Kézi 6 fokozatú",
     "wheelDrive": " Elsőkerék hajtás",
-    "price": 0
+    "price": 2000000
   },
   {
     "id": 2,
     "name": "DSG váltó 7 fokozatú",
     "wheelDrive": " Elsőkerék hajtás",
-    "price": 200000
+    "price": 4000000
   },
   {
     "id": 3,
     "name": "DSG váltó 6 fokozatú",
     "wheelDrive": " Elsőkerék hajtás",
-    "price": 300000
+    "price": 3000000
   },
   {
     "id": 4,
     "name": "DSG váltó 7 fokozatú",
     "wheelDrive": "Összkerék hajtás",
-    "price": 400000
+    "price": 6000000
   }
 ]
 

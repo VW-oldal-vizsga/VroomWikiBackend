@@ -36,6 +36,7 @@ namespace Models
         [ForeignKey("ConfigTransmissionType")]
         public required int TransmissionType_Id { get; set; }
         public required ConfigTransmissionType ConfigTransmissionType { get; set; }
+        public int Price { get; set; }
 
     } 
 }

@@ -20,5 +20,7 @@ namespace Models
 
         [StringLength(40)]
         public required string? FuelType { get; set; }
+        public int Price { get; set; }
+
     }
 }
