@@ -29,6 +29,9 @@ namespace VroomWiki.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Id")
@@ -40,17 +43,32 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Piros"
+                            Name = "Piros",
+                            Price = 135000
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Kék"
+                            Name = "Kék",
+                            Price = 150000
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Zöld"
+                            Name = "Zöld",
+                            Price = 155000
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Fehér",
+                            Price = 130000
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Szürke",
+                            Price = 160000
                         });
                 });
 
@@ -77,6 +95,9 @@ namespace VroomWiki.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)");
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Id")
@@ -92,7 +113,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 6f,
                             FuelType = "Benzin",
                             Horsepower = 115,
-                            Name = "1.5 TSI"
+                            Name = "1.5 TSI",
+                            Price = 100000
                         },
                         new
                         {
@@ -101,7 +123,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 6.1f,
                             FuelType = "Benzin",
                             Horsepower = 150,
-                            Name = "1.5 TSI"
+                            Name = "1.5 TSI",
+                            Price = 120000
                         },
                         new
                         {
@@ -110,7 +133,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 5.4f,
                             FuelType = "Benzin(mild) Hybrid",
                             Horsepower = 150,
-                            Name = "1.5 eTSI"
+                            Name = "1.5 eTSI",
+                            Price = 130000
                         },
                         new
                         {
@@ -119,7 +143,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 4.8f,
                             FuelType = "Gázolaj",
                             Horsepower = 150,
-                            Name = "2.0 TDI"
+                            Name = "2.0 TDI",
+                            Price = 140000
                         },
                         new
                         {
@@ -128,7 +153,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 0.3f,
                             FuelType = "Kombinált: benzin és elektromotor",
                             Horsepower = 150,
-                            Name = "1.5 TSI Plug-In-Hybrid"
+                            Name = "1.5 TSI Plug-In-Hybrid",
+                            Price = 150000
                         },
                         new
                         {
@@ -137,7 +163,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 7.5f,
                             FuelType = "Benzin",
                             Horsepower = 265,
-                            Name = "2.0 TSI"
+                            Name = "2.0 TSI",
+                            Price = 160000
                         },
                         new
                         {
@@ -146,7 +173,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 7.9f,
                             FuelType = "Benzin",
                             Horsepower = 300,
-                            Name = "2.0 TSI"
+                            Name = "2.0 TSI",
+                            Price = 170000
                         },
                         new
                         {
@@ -155,7 +183,8 @@ namespace VroomWiki.Migrations
                             FuelConsumption = 8.5f,
                             FuelType = "Benzin",
                             Horsepower = 333,
-                            Name = "2.0 TSI"
+                            Name = "2.0 TSI",
+                            Price = 180000
                         });
                 });
 
@@ -168,6 +197,9 @@ namespace VroomWiki.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<string>("WheelDrive")
                         .HasMaxLength(40)
@@ -185,24 +217,28 @@ namespace VroomWiki.Migrations
                         {
                             Id = 1,
                             Name = "Kézi 6 fokozatú",
+                            Price = 2000000,
                             WheelDrive = " Elsőkerék hajtás"
                         },
                         new
                         {
                             Id = 2,
                             Name = "DSG váltó 7 fokozatú",
+                            Price = 4000000,
                             WheelDrive = " Elsőkerék hajtás"
                         },
                         new
                         {
                             Id = 3,
                             Name = "DSG váltó 6 fokozatú",
+                            Price = 3000000,
                             WheelDrive = " Elsőkerék hajtás"
                         },
                         new
                         {
                             Id = 4,
                             Name = "DSG váltó 7 fokozatú",
+                            Price = 6000000,
                             WheelDrive = "Összkerék hajtás"
                         });
                 });
@@ -221,6 +257,9 @@ namespace VroomWiki.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<int>("Engine_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<int>("TransmissionType_Id")
@@ -251,6 +290,7 @@ namespace VroomWiki.Migrations
                             Color_Id = 1,
                             ConfigName = "Álom",
                             Engine_Id = 1,
+                            Price = 1000000,
                             TransmissionType_Id = 1,
                             User_Id = 2
                         });
@@ -593,7 +633,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 3, 12, 10, 11, 27, 706, DateTimeKind.Local).AddTicks(6801),
+                            CreatedAt = new DateTime(2025, 3, 19, 10, 2, 9, 82, DateTimeKind.Local).AddTicks(4383),
                             Email = "admin@admin.com",
                             PasswordHash = "I0Yc6TccQCwchTC6/UG526feEu1FSvPW9n6BdFp6eBU=",
                             Username = "admin"
@@ -601,7 +641,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 3, 12, 10, 11, 27, 794, DateTimeKind.Local).AddTicks(2700),
+                            CreatedAt = new DateTime(2025, 3, 19, 10, 2, 9, 163, DateTimeKind.Local).AddTicks(177),
                             Email = "nagybela01@gmail.com",
                             PasswordHash = "xKXHEmOpOcl/eNN2oWIy0Ix0v2DN124l4/FezX3BX54=",
                             Username = "nbela007"
@@ -609,7 +649,7 @@ namespace VroomWiki.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 3, 12, 10, 11, 27, 871, DateTimeKind.Local).AddTicks(7971),
+                            CreatedAt = new DateTime(2025, 3, 19, 10, 2, 9, 238, DateTimeKind.Local).AddTicks(9190),
                             Email = "kissjanos@gmail.com",
                             PasswordHash = "Xi8Qolqe94ZM9C5XcaFRvcda2kcIV3unpoDcl1O17V0=",
                             Username = "kjanos"
