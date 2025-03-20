@@ -35,7 +35,8 @@ namespace VroomWiki.Controllers
                     p.TransmissionType_Id,
                     p.ConfigName,
                     p.User_Id,
-                    p.Price
+                    p.Price,
+                    p.ImageBase64
                 }));
             });
         }
@@ -53,11 +54,20 @@ namespace VroomWiki.Controllers
                     p.TransmissionType_Id,
                     p.ConfigName,
                     p.User_Id,
-                    p.Price
+                    p.Price,
+                    p.ImageBase64
                 }));
             });
         }
 
+        [HttpGet("image/{id}")]
+        public IActionResult GetImageConfig(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(configuratorRepository.GetImageConfig(id), "image/jpeg");
+            });
+        }
 
         // COLORS
 
@@ -71,7 +81,8 @@ namespace VroomWiki.Controllers
                 {
                     p.Id,
                     p.Name,
-                    p.Price
+                    p.Price,
+                    p.ImageBase64
                 }));
             });
         }
@@ -86,8 +97,18 @@ namespace VroomWiki.Controllers
                 {
                     p.Id,
                     p.Name,
-                    p.Price
+                    p.Price,
+                    p.ImageBase64
                 }));
+            });
+        }
+
+        [HttpGet("color/image/{id}")]
+        public IActionResult GetImageColor(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(configuratorRepository.GetImageColor(id), "image/jpeg");
             });
         }
 

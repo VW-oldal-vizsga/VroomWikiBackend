@@ -22,6 +22,20 @@ namespace VroomWiki.Repositories
             return context.Set<Configuration>().Where(p => p.Id == id);
         }
 
+        public byte[] GetImageConfig(int id)
+        {
+            var configuration = context.Set<Configuration>().SingleOrDefault(p => p.Id == id);
+            if (configuration == null)
+                return null!;
+            return Convert.FromBase64String(configuration.ImageBase64);
+        }public byte[] GetImageColor(int id)
+        {
+            var configColor = context.Set<ConfigColor>().SingleOrDefault(p => p.Id == id);
+            if (configColor == null)
+                return null!;
+            return Convert.FromBase64String(configColor.ImageBase64);
+        }
+
         public IEnumerable<ConfigColor> GetAllColor()
         {
             return context.Set<ConfigColor>();
