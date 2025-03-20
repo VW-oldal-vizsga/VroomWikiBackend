@@ -28,12 +28,6 @@ namespace VroomWiki.Repositories
             if (configuration == null)
                 return null!;
             return Convert.FromBase64String(configuration.ImageBase64);
-        }public byte[] GetImageColor(int id)
-        {
-            var configColor = context.Set<ConfigColor>().SingleOrDefault(p => p.Id == id);
-            if (configColor == null)
-                return null!;
-            return Convert.FromBase64String(configColor.ImageBase64);
         }
 
         public IEnumerable<ConfigColor> GetAllColor()
@@ -44,6 +38,14 @@ namespace VroomWiki.Repositories
         public IEnumerable<ConfigColor> GetOneColor(int id)
         {
             return context.Set<ConfigColor>().Where(p => p.Id == id);
+        }
+
+        public byte[] GetImageColor(int id)
+        {
+            var configColor = context.Set<ConfigColor>().SingleOrDefault(p => p.Id == id);
+            if (configColor == null)
+                return null!;
+            return Convert.FromBase64String(configColor.ImageBase64);
         }
 
         public IEnumerable<ConfigEngine> GetAllEngines()
