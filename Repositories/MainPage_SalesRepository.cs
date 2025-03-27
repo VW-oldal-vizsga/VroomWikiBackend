@@ -65,5 +65,38 @@ namespace VroomWiki.Repositories
                 return null!;
             return Convert.FromBase64String(mainPage.ImageBase64);
         }
+
+        public byte[] GetImageChairman(int id)
+        {
+            var mainPage = context.Set<MainPage>().SingleOrDefault(p => p.Id == id);
+            if (mainPage == null)
+                return null!;
+            return Convert.FromBase64String(mainPage.ImageBase64Chairman);
+        }
+
+        public byte[] GetImageBratislava(int id)
+        {
+            var mainPage = context.Set<MainPage>().SingleOrDefault(p => p.Id == id);
+            if (mainPage == null)
+                return null!;
+            return Convert.FromBase64String(mainPage.ImageBase64Bratislava);
+        }
+
+        public byte[] GetImageWolfsburg(int id)
+        {
+            var mainPage = context.Set<MainPage>().SingleOrDefault(p => p.Id == id);
+            if (mainPage == null)
+                return null!;
+            return Convert.FromBase64String(mainPage.ImageBase64Wolfsburg);
+        }
+
+        public byte[] GetImageDresden(int id)
+        {
+            var mainPage = context.Set<MainPage>().SingleOrDefault(p => p.Id == id);
+            if (mainPage == null)
+                return null!;
+            return Convert.FromBase64String(mainPage.ImageBase64Dresden);
+        }
+
     }
 }

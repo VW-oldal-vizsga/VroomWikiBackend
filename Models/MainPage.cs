@@ -25,6 +25,11 @@ namespace Models
         [StringLength(30)]
         public required string? Chairman { get; set; }
 
+        public string? ImageBase64Chairman { get; set; }
+        public string? ImageBase64Bratislava { get; set; }
+        public string? ImageBase64Wolfsburg { get; set; }
+        public string? ImageBase64Dresden { get; set; }
+
         [StringLength(30)]
         public required string? Owner { get; set; }
 

@@ -36,6 +36,7 @@ namespace VroomWiki.Controllers
                     p.Employees,
                     p.Factories,
                     p.Chairman,
+                    p.ImageBase64Chairman,
                     p.Founded,
                     p.Headquarters,
                     p.Products,
@@ -51,6 +52,38 @@ namespace VroomWiki.Controllers
             return this.Run(() =>
             {
                 return File(mainPage_SalesRepository.GetImage(id), "image/jpeg");
+            });
+        }
+        [HttpGet("imageChairman/{id}")]
+        public IActionResult GetImageChairman(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(mainPage_SalesRepository.GetImageChairman(id), "image/jpeg");
+            });
+        }
+        [HttpGet("imageBratislava/{id}")]
+        public IActionResult GetImageBratislava(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(mainPage_SalesRepository.GetImageBratislava(id), "image/jpeg");
+            });
+        }
+        [HttpGet("imageWolfsburg/{id}")]
+        public IActionResult GetImageWolfsburg(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(mainPage_SalesRepository.GetImageWolfsburg(id), "image/jpeg");
+            });
+        }
+        [HttpGet("imageDresden/{id}")]
+        public IActionResult GetImageDresden(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(mainPage_SalesRepository.GetImageDresden(id), "image/jpeg");
             });
         }
 
