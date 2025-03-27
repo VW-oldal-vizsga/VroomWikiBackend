@@ -25,6 +25,13 @@ namespace Models
 
         public required string? Horsepower { get; set; }
         public required int? ReleaseDate { get; set; }
+
+        public  List<string> Assembly { get; set; }
+
+        public  string Designer { get; set; }
+        public  string Design { get; set; }
+        public  List<string> Production { get; set; }
+
         public bool IsDeleted { get; set; } = false;
     }
 }
