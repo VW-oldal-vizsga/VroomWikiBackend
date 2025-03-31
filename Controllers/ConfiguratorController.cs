@@ -134,7 +134,7 @@ namespace VroomWiki.Controllers
 
         // GET api/<ConfiguratorController>/5
         [HttpGet("engines/{id}")]
-        public IActionResult GetOneEngines(int id)
+        public IActionResult GetOneEngine(int id)
         {
             return this.Run(() =>
             {
@@ -169,7 +169,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpGet("transmission/{id}")]
-        public IActionResult GetOneTransmissions(int id)
+        public IActionResult GetOneTransmission(int id)
         {
             return this.Run(() =>
             {
