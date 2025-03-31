@@ -82,7 +82,8 @@ namespace VroomWiki.Controllers
                     p.Id,
                     p.Name,
                     p.Price,
-                    p.ImageBase64
+                    p.ImageBase64,
+                    p.ColorCode
                 }));
             });
         }
@@ -98,7 +99,8 @@ namespace VroomWiki.Controllers
                     p.Id,
                     p.Name,
                     p.Price,
-                    p.ImageBase64
+                    p.ImageBase64,
+                    p.ColorCode
                 }));
             });
         }
