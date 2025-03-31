@@ -58,7 +58,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpPost("logout")]
-        [Authorize]
+        [Authorize(Roles ="Admin, User")]
         public IActionResult logout()
         {
             return this.Run(() =>
