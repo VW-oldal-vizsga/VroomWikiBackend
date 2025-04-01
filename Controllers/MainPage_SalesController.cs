@@ -156,7 +156,7 @@ namespace VroomWiki.Controllers
 
         //POST api/<PastModelsController>
         [HttpPost("sales")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddSale(dynamic newSale)
         {
             return this.Run(() =>
@@ -167,7 +167,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpDelete("sales/{id}")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteSale(int id)
         {
             return this.Run(() =>
