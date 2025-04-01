@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using VroomWiki.Data;
 
 using VroomWiki.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,7 +32,9 @@ namespace VroomWiki.Controllers
                 return Ok(mainPage_SalesRepository.GetAllMp().Select(p => new
                 {
                     p.Id,
-                    p.Description,
+                    p.DescriptionHU,
+                    p.DescriptionEN,
+                    p.DescriptionDU,
                     p.Owner,
                     p.Employees,
                     p.Factories,
@@ -96,10 +99,18 @@ namespace VroomWiki.Controllers
                 {
                     p.Id,
                     p.Title,
+                    p.TitleEN,
+                    p.TitleDU,
                     p.History,
+                    p.HistoryEN,
+                    p.HistoryDU,
                     p.History2,
-                    p.History3
-                    
+                    p.History2EN,
+                    p.History2DU,
+                    p.History3,
+                    p.History3EN,
+                    p.History3DU
+
                 }));
             });
         }
@@ -114,7 +125,17 @@ namespace VroomWiki.Controllers
                 {
                     p.Id,
                     p.Title,
-                    p.History
+                    p.TitleEN,
+                    p.TitleDU,
+                    p.History,
+                    p.HistoryEN,
+                    p.HistoryDU,
+                    p.History2,
+                    p.History2EN,
+                    p.History2DU,
+                    p.History3,
+                    p.History3EN,
+                    p.History3DU
 
                 }));
             });

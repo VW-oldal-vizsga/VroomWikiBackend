@@ -1,44 +1,92 @@
 [
-  {
-    "id": 1,
-    "title": "1937-1945: Alapítás és a háború hatásai",
-    "history": "1937: A Volkswagen története 1937-ben kezdődött, amikor a Volkswagenwerk GmbH nevű céget alapították Németországban. A céget a Német Munkafront (Deutsche Arbeitsfront) hozta létre, és célja az volt, hogy egy olcsó, elérhető áron vásárolható autót készítsenek a német munkások számára.",
-    "history2": "1938: A híres Volkswagen Beetle (Bogár) első prototípusa bemutatásra került. Az autó tervezését Ferdinand Porsche irányította, és a cél az volt, hogy egy mindenki számára elérhető, megbízható járművet készítsenek.",
-    "history3": "1940-es évek: A második világháború kitörése után a Volkswagen gyárat szinte teljesen átalakították katonai járművek és alkatrészek gyártására, így a civil termelés szünetelt. A háború végére a gyár szinte teljesen tönkrement."
-  },
-  {
-    "id": 2,
-    "title": "1945-1950: Újjáéledés és a Bogár sikere",
-    "history": "1945: A háború végén, a szövetségesek megszállása alatt a Volkswagen gyárat brit irányítás alá vonták. Az új vezetés célja a gyár újjáélesztése volt.",
-    "history2": "1949: Az amerikai Volkswagen Import, Inc. elindította a Volkswagen Beetle importálását az Egyesült Államokba, és hatalmas sikert arattak vele.",
-    "history3": "1950: Az autó elérte a 1 milliós gyártott példányt, ami nagy mérföldkő volt a vállalat számára. A Bogár népszerűsége gyorsan nőtt, és hamarosan a világ egyik legismertebb autójává vált."
-  },
-  {
-    "id": 3,
-    "title": "1950-1970: A globális terjeszkedés és az innovációk",
-    "history": "1954: A Volkswagen elkezdte a Transporter (más néven Microbus) gyártását, amely szintén nagy siker lett, különösen a fiatalok körében.",
-    "history2": "1960-as évek: A Volkswagen az Egyesült Államokban egyre erősebben jelen volt, és elkezdődött az autók modernizálása is. A cég újabb modellekkel jelent meg, mint például a Volkswagen Type 3 és a Volkswagen Type 4.",
-    "history3": "1965: A Volkswagen megvásárolta az Auto Union-t, és ezzel megszerezte a Audi márkát, ami fontos lépés volt a vállalat terjeszkedésében."
-  },
-  {
-    "id": 4,
-    "title": "1970-1990: Új modellek, és a dizájn forradalom",
-    "history": "1970-es évek: A Volkswagen megkezdte az újabb modellcsaládok, például a Golf és a Passat gyártását. A Golf bemutatása (1974) egy mérföldkő volt a márka történetében, mivel a modellek a globális autópiacon is rendkívüli sikernek örvendtek.",
-    "history2": "1980-as évek: A Volkswagen elkezdett egyre több új technológiai fejlesztést alkalmazni a járművein, mint például a turbofeltöltős motorok és az elektronikus vezérlőrendszerek.",
-    "history3": ""
-  },
-  {
-    "id": 5,
-    "title": "1990-2010: Technológiai fejlődés és környezettudatos változások",
-    "history": "1990-es évek: A cég elindította az Audi, SEAT, Skoda és Bentley márkák feletti irányítást. Emellett folytatták az új modellek piacra dobását, mint például a Volkswagen Polo és a Volkswagen Jetta.",
-    "history2": "2000-es évek: A Volkswagen erőteljesen belépett a prémium szegmensbe a Volkswagen Phaeton és a Volkswagen Touareg modellekkel. A cég elkezdett környezetbarátabb autók fejlesztésébe is, és elindították az EcoFuel és TDI dízelmotoros autókat.",
-    "history3": "2009: A Volkswagen elérte a 200 milliós gyártott autót. Ekkor már az egyik legnagyobb autógyártóvá vált a világon."
-  },
-  {
-    "id": 6,
-    "title": "2010-2025: A dízelbotrány és az elektromos jövő",
-    "history": "2015: A Volkswagen komoly botrányba keveredett, miután kiderült, hogy a vállalat manipulálta a dízelmotorok kibocsátási tesztjeit. Ez a dízelbotrány komoly pénzügyi és jogi következményekkel járt a cég számára.",
-    "history2": "2016: A Volkswagen bejelentette, hogy komoly erőfeszítéseket tesz az elektromos autók fejlesztésére. Ennek eredményeként létrejött a ID. sorozat, amely az elektromos mobilitás irányába terelte a márkát.",
-    "history3": "2020-as évek: A Volkswagen tovább erősítette jelenlétét az elektromos autópiacon az ID.3, ID.4 és más elektromos modellek bevezetésével. A cég célja, hogy 2030-ra az autóinak egy jelentős része elektromos meghajtású legyen."
-  }
+    {
+        "id": 1,
+        "title": "1937-1945: Alapítás és a háború hatásai",
+        "titleEN": "1937-1945: Foundation and the Effects of the War",
+        "titleDU": "1937-1945: Gründung und die Auswirkungen des Krieges",
+        "history": "1937: A Volkswagen története 1937-ben kezdődött, amikor a Volkswagenwerk GmbH nevű céget alapították Németországban. A céget a Német Munkafront (Deutsche Arbeitsfront) hozta létre, és célja az volt, hogy egy olcsó, elérhető áron vásárolható autót készítsenek a német munkások számára.",
+        "historyEN": "1937: The history of Volkswagen began in 1937 when the company Volkswagenwerk GmbH was founded in Germany. The company was established by the German Labour Front (Deutsche Arbeitsfront) with the goal of creating an affordable car for German workers.",
+        "historyDU": "1937: Die Geschichte von Volkswagen begann 1937, als das Unternehmen Volkswagenwerk GmbH in Deutschland gegründet wurde. Das Unternehmen wurde von der Deutschen Arbeitsfront ins Leben gerufen, mit dem Ziel, ein günstiges, erschwingliches Auto für die deutschen Arbeiter zu produzieren.",
+        "history2": "1938: A híres Volkswagen Beetle (Bogár) első prototípusa bemutatásra került. Az autó tervezését Ferdinand Porsche irányította, és a cél az volt, hogy egy mindenki számára elérhető, megbízható járművet készítsenek.",
+        "history2EN": "1938: The first prototype of the famous Volkswagen Beetle was introduced. The design of the car was led by Ferdinand Porsche, aiming to create a reliable and accessible vehicle for everyone.",
+        "history2DU": "1938: Der erste Prototyp des berühmten Volkswagen Käfers (Bug) wurde vorgestellt. Das Design des Autos wurde von Ferdinand Porsche geleitet, und das Ziel war es, ein zuverlässiges Fahrzeug zu schaffen, das für jedermann erschwinglich war.",
+        "history3": "1940-es évek: A második világháború kitörése után a Volkswagen gyárat szinte teljesen átalakították katonai járművek és alkatrészek gyártására, így a civil termelés szünetelt. A háború végére a gyár szinte teljesen tönkrement.",
+        "history3EN": "1940s: After the outbreak of World War II, the Volkswagen factory was almost entirely converted to produce military vehicles and parts, causing civilian production to halt. By the end of the war, the factory was nearly destroyed.",
+        "history3DU": "1940er Jahre: Nach dem Ausbruch des Zweiten Weltkriegs wurde das Volkswagen-Werk fast vollständig auf die Produktion von Militärfahrzeugen und -komponenten umgestellt, wodurch die zivile Produktion pausiert wurde. Am Ende des Krieges war das Werk nahezu vollständig zerstört."
+    },
+    {
+        "id": 2,
+        "title": "1945-1950: Újjáéledés és a Bogár sikere",
+        "titleEN": "1945-1950: Revival and the Success of the Beetle",
+        "titleDU": "1945-1950: Wiederbelebung und der Erfolg des Käfers",
+        "history": "1945: A háború végén, a szövetségesek megszállása alatt a Volkswagen gyárat brit irányítás alá vonták. Az új vezetés célja a gyár újjáélesztése volt.",
+        "historyEN": "1945: At the end of the war, under Allied occupation, the Volkswagen factory was placed under British control. The new management aimed to revive the factory.",
+        "historyDU": "1945: Am Ende des Krieges, unter alliierter Besatzung, wurde das Volkswagen-Werk unter britische Kontrolle gestellt. Die neue Führung hatte das Ziel, das Werk wiederzubeleben.",
+        "history2": "1949: Az amerikai Volkswagen Import, Inc. elindította a Volkswagen Beetle importálását az Egyesült Államokba, és hatalmas sikert arattak vele.",
+        "history2EN": "1949: Volkswagen Import, Inc. in the United States began importing the Volkswagen Beetle, achieving massive success.",
+        "history2DU": "1949: Die amerikanische Volkswagen Import, Inc. begann mit dem Import des Volkswagen Käfers in die Vereinigten Staaten, wo er einen riesigen Erfolg erzielte.",
+        "history3": "1950: Az autó elérte a 1 milliós gyártott példányt, ami nagy mérföldkő volt a vállalat számára. A Bogár népszerűsége gyorsan nőtt, és hamarosan a világ egyik legismertebb autójává vált.",
+        "history3EN": "1950: The production of the Beetle reached one million units, marking a significant milestone for the company. Its popularity grew rapidly, and it soon became one of the world's most recognizable cars.",
+        "history3DU": "1950: Das Auto erreichte die Marke von 1 Million produzierten Einheiten, was einen bedeutenden Meilenstein für das Unternehmen darstellte. Die Beliebtheit des Käfers wuchs schnell und er wurde bald eines der bekanntesten Autos der Welt."
+    },
+    {
+        "id": 3,
+        "title": "1950-1970: A globális terjeszkedés és az innovációk",
+        "titleEN": "1950-1970: Global Expansion and Innovations",
+        "titleDU": "1950-1970: Globale Expansion und Innovationen",
+        "history": "1954: A Volkswagen elkezdte a Transporter (más néven Microbus) gyártását, amely szintén nagy siker lett, különösen a fiatalok körében.",
+        "historyEN": "1954: Volkswagen started manufacturing the Transporter (also known as the Microbus), which became a great success, especially among young people.",
+        "historyDU": "1954: Volkswagen begann mit der Produktion des Transporters (auch bekannt als Microbus), der ebenfalls ein großer Erfolg wurde, besonders bei jungen Leuten.",
+        "history2": "1960-as évek: A Volkswagen az Egyesült Államokban egyre erősebben jelen volt, és elkezdődött az autók modernizálása is. A cég újabb modellekkel jelent meg, mint például a Volkswagen Type 3 és a Volkswagen Type 4.",
+        "history2EN": "1960s: Volkswagen's presence in the United States grew stronger, and the modernization of its cars also began. The company introduced new models, such as the Volkswagen Type 3 and Volkswagen Type 4.",
+        "history2DU": "1960er Jahre: Volkswagens Präsenz in den Vereinigten Staaten nahm zu, und die Modernisierung der Autos begann ebenfalls. Das Unternehmen brachte neue Modelle auf den Markt, wie zum Beispiel den Volkswagen Type 3 und den Volkswagen Type 4.",
+        "history3": "1965: A Volkswagen megvásárolta az Auto Union-t, és ezzel megszerezte a Audi márkát, ami fontos lépés volt a vállalat terjeszkedésében.",
+        "history3EN": "1965: Volkswagen acquired Auto Union, thereby gaining the Audi brand, marking an important step in the company's expansion.",
+        "history3DU": "1965: Volkswagen erwarb die Auto Union und sicherte sich so die Audi-Marke, was einen wichtigen Schritt in der Expansion des Unternehmens darstellte."
+    },
+    {
+        "id": 4,
+        "title": "1970-1990: Új modellek, és a dizájn forradalom",
+        "titleEN": "1970-1990: New Models and the Design Revolution",
+        "titleDU": "1970-1990: Neue Modelle und die Design-Revolution",
+        "history": "1970-es évek: A Volkswagen megkezdte az újabb modellcsaládok, például a Golf és a Passat gyártását. A Golf bemutatása (1974) egy mérföldkő volt a márka történetében, mivel a modellek a globális autópiacon is rendkívüli sikernek örvendtek.",
+        "historyEN": "1970s: Volkswagen began manufacturing new model families, such as the Golf and Passat. The introduction of the Golf (1974) was a milestone in the brand's history, as the models enjoyed extraordinary success in the global car market.",
+        "historyDU": "1970er Jahre: Volkswagen begann mit der Produktion neuer Modellfamilien, wie zum Beispiel dem Golf und dem Passat. Die Vorstellung des Golf (1974) war ein Meilenstein in der Geschichte der Marke, da die Modelle auch auf dem globalen Automarkt außergewöhnlichen Erfolg hatten.",
+        "history2": "1980-as évek: A Volkswagen elkezdett egyre több új technológiai fejlesztést alkalmazni a járművein, mint például a turbofeltöltős motorok és az elektronikus vezérlőrendszerek.",
+        "history2EN": "1980s: Volkswagen started incorporating more and more new technological developments into its vehicles, such as turbocharged engines and electronic control systems.",
+        "history2DU": "1980er Jahre: Volkswagen begann, immer mehr neue technologische Entwicklungen in seinen Fahrzeugen zu integrieren, wie zum Beispiel Turbolader und elektronische Steuerungssysteme.",
+        "history3": "",
+        "history3EN": "",
+        "history3DU": ""
+    },
+    {
+        "id": 5,
+        "title": "1990-2010: Technológiai fejlődés és környezettudatos változások",
+        "titleEN": "1990-2010: Technological Advancements and Environmentally Conscious Changes",
+        "titleDU": "1990-2010: Technologische Entwicklung und umweltbewusste Veränderungen",
+        "history": "1990-es évek: A cég elindította az Audi, SEAT, Skoda és Bentley márkák feletti irányítást. Emellett folytatták az új modellek piacra dobását, mint például a Volkswagen Polo és a Volkswagen Jetta.",
+        "historyEN": "1990s: The company took control of the Audi, SEAT, Skoda, and Bentley brands. Additionally, they continued launching new models, such as the Volkswagen Polo and Volkswagen Jetta.",
+        "historyDU": "1990er Jahre: Das Unternehmen übernahm die Kontrolle über die Marken Audi, SEAT, Skoda und Bentley. Außerdem setzten sie die Einführung neuer Modelle fort, wie zum Beispiel den Volkswagen Polo und den Volkswagen Jetta.",
+        "history2": "2000-es évek: A Volkswagen erőteljesen belépett a prémium szegmensbe a Volkswagen Phaeton és a Volkswagen Touareg modellekkel. A cég elkezdett környezetbarátabb autók fejlesztésébe is, és elindították az EcoFuel és TDI dízelmotoros autókat.",
+        "history2EN": "2000s: Volkswagen made a strong entry into the premium segment with the Volkswagen Phaeton and Volkswagen Touareg models. The company also began developing more environmentally friendly cars and launched the EcoFuel and TDI diesel-powered vehicles.",
+        "history2DU": "2000er Jahre: Volkswagen trat mit den Modellen Volkswagen Phaeton und Volkswagen Touareg stark in das Premiumsegment ein. Das Unternehmen begann auch, umweltfreundlichere Autos zu entwickeln, und brachte die EcoFuel- und TDI-Dieselfahrzeuge auf den Markt.",
+        "history3": "2009: A Volkswagen elérte a 200 milliós gyártott autót. Ekkor már az egyik legnagyobb autógyártóvá vált a világon.",
+        "history3EN": "2009: Volkswagen reached the milestone of producing its 200 millionth car. By this time, it had become one of the largest car manufacturers in the world.",
+        "history3DU": "2009: Volkswagen erreichte die Marke von 200 Millionen produzierten Autos. Zu diesem Zeitpunkt war es bereits einer der größten Automobilhersteller der Welt."
+    },
+    {
+        "id": 6,
+        "title": "2010-2025: A dízelbotrány és az elektromos jövő",
+        "titleEN": "2010-2025: The Diesel Scandal and the Electric Future",
+        "titleDU": "2010-2025: Der Dieselskandal und die elektrische Zukunft",
+        "history": "2015: A Volkswagen komoly botrányba keveredett, miután kiderült, hogy a vállalat manipulálta a dízelmotorok kibocsátási tesztjeit. Ez a dízelbotrány komoly pénzügyi és jogi következményekkel járt a cég számára.",
+        "historyEN": "2015: Volkswagen became embroiled in a major scandal after it was revealed that the company had manipulated emissions tests for its diesel engines. This diesel scandal had serious financial and legal consequences for the company.",
+        "historyDU": "2015: Volkswagen geriet in einen schweren Skandal, als bekannt wurde, dass das Unternehmen die Emissionstests für seine Dieselmotoren manipuliert hatte. Dieser Dieselskandal hatte schwerwiegende finanzielle und rechtliche Folgen für das Unternehmen.",
+        "history2": "2016: A Volkswagen bejelentette, hogy komoly erőfeszítéseket tesz az elektromos autók fejlesztésére. Ennek eredményeként létrejött a ID. sorozat, amely az elektromos mobilitás irányába terelte a márkát.",
+        "history2EN": "2016: Volkswagen announced that it was making significant efforts to develop electric vehicles. As a result, the ID. series was created, steering the brand towards electric mobility.",
+        "history2DU": "2016: Volkswagen kündigte an, dass es erhebliche Anstrengungen unternehmen werde, um Elektroautos zu entwickeln. Infolgedessen wurde die ID.-Reihe ins Leben gerufen, die die Marke in Richtung Elektromobilität lenkte.",
+        "history3": "2020-as évek: A Volkswagen tovább erősítette jelenlétét az elektromos autópiacon az ID.3, ID.4 és más elektromos modellek bevezetésével. A cég célja, hogy 2030-ra az autóinak egy jelentős része elektromos meghajtású legyen.",
+        "history3EN": "2020s: Volkswagen further strengthened its presence in the electric car market with the introduction of the ID.3, ID.4, and other electric models. The company's goal is to have a significant portion of its vehicles be electric by 2030.",
+        "history3DU": "2020er Jahre: Volkswagen verstärkte seine Präsenz auf dem Elektromobilitätsmarkt mit der Einführung der Modelle ID.3, ID.4 und anderer Elektrofahrzeuge. Das Ziel des Unternehmens ist es, bis 2030 einen bedeutenden Teil seiner Fahrzeuge elektrisch anzutreiben."
+    }
 ]

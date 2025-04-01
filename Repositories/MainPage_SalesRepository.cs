@@ -28,6 +28,7 @@ namespace VroomWiki.Repositories
             return context.Set<MainPageHistory>().Where(p => p.Id == id);
         }
 
+
         public IEnumerable<Sale> GetAllSale()
         {
             return context.Set<Sale>();
