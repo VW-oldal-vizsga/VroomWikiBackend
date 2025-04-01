@@ -87,7 +87,7 @@ namespace VroomWiki.Data
                 );
 
             modelBuilder.Entity<Configuration>().HasData(configurations);
-            modelBuilder.Entity<PopularConfigs>().HasData(configurations);
+            modelBuilder.Entity<PopularConfigs>().HasData(popularConfigs);
 
         }
 

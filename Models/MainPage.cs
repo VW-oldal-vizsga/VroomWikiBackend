@@ -12,7 +12,7 @@ namespace Models
         [Key]
         public required int Id { get; set; }
 
-        public string? Description { get; set; }
+        public List<string> Description { get; set; }
 
         public required int? Founded { get; set; }
 
@@ -20,7 +20,7 @@ namespace Models
         public string? Headquarters { get; set; }
 
         [StringLength(50)]
-        public string? Factories { get; set; }
+        public List<string> Factories { get; set; }
 
         [StringLength(30)]
         public required string? Chairman { get; set; }
@@ -33,7 +33,7 @@ namespace Models
         [StringLength(30)]
         public required string? Owner { get; set; }
 
-        public string? Products { get; set; }
+        public List<string> Products { get; set; }
         public int? Employees { get; set; }
         public string? Profit { get; set; }
         public string? ImageBase64 { get; set; }
