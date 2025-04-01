@@ -43,6 +43,7 @@ namespace VroomWiki.Data
             modelBuilder.Entity<ConfigColor>().HasIndex(c => c.Id).IsUnique();
             modelBuilder.Entity<ConfigEngine>().HasIndex(c => c.Id).IsUnique();
             modelBuilder.Entity<Configuration>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<PopularConfigs>().HasIndex(c => c.Id).IsUnique();
 
 
            
@@ -55,6 +56,7 @@ namespace VroomWiki.Data
             var sales = LoadSalesFromJson();
             var users = LoadUsersFromJson();
             var configurations = LoadConfigurationsFromJson();
+            var popularConfigs = LoadPopularConfigsFromJson();
 
             modelBuilder.Entity<ConfigEngine>().HasData(configEngines);
             modelBuilder.Entity<ConfigColor>().HasData(configColor);
@@ -85,6 +87,7 @@ namespace VroomWiki.Data
                 );
 
             modelBuilder.Entity<Configuration>().HasData(configurations);
+            modelBuilder.Entity<PopularConfigs>().HasData(configurations);
 
         }
 
@@ -142,6 +145,12 @@ namespace VroomWiki.Data
             // JSON fájl beolvasása
             var json = File.ReadAllText("Configurations.json");
             return JsonConvert.DeserializeObject<List<Configuration>>(json);
+        }
+        private List<PopularConfigs> LoadPopularConfigsFromJson()
+        {
+            // JSON fájl beolvasása
+            var json = File.ReadAllText("PopularConfigs.json");
+            return JsonConvert.DeserializeObject<List<PopularConfigs>>(json);
         }
 
     }

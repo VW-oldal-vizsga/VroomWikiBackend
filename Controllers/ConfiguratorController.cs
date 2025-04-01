@@ -69,6 +69,53 @@ namespace VroomWiki.Controllers
             });
         }
 
+        // POPULAR CONFIGS
+
+        [HttpGet("popularconfigs")]
+        public IActionResult GetPopularConfigurations()
+        {
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.GetAllPopularConfigs().Select(p => new
+                {
+                    p.Id,
+                    p.Color_Id,
+                    p.Engine_Id,
+                    p.TransmissionType_Id,
+                    p.ConfigName,
+                    p.Price,
+                    p.ImageBase64
+                }));
+            });
+        }
+
+        [HttpGet("popularconfigs/{id}")]
+        public IActionResult GetOnePopularConfig(int id)
+        {
+            return this.Run(() =>
+            {
+                return Ok(configuratorRepository.GetOnePopularConfig(id).Select(p => new
+                {
+                    p.Id,
+                    p.Color_Id,
+                    p.Engine_Id,
+                    p.TransmissionType_Id,
+                    p.ConfigName,
+                    p.Price,
+                    p.ImageBase64
+                }));
+            });
+        }
+
+        [HttpGet("popularconfigs/image/{id}")]
+        public IActionResult GetImagePopularConfig(int id)
+        {
+            return this.Run(() =>
+            {
+                return File(configuratorRepository.GetImagePopularConfig(id), "image/jpeg");
+            });
+        }
+
         // COLORS
 
         // GET: api/<ConfiguratorController>

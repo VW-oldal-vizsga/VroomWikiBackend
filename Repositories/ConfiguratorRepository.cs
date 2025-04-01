@@ -1,6 +1,7 @@
 ﻿using Models;
 using Newtonsoft.Json;
 using VroomWiki.Data;
+using VroomWiki.Models;
 
 namespace VroomWiki.Repositories
 {
@@ -100,6 +101,24 @@ namespace VroomWiki.Repositories
 
             context.Set<Configuration>().Remove(configurator);
             context.SaveChanges();
+        }
+
+        public IEnumerable<PopularConfigs> GetAllPopularConfigs()
+        {
+            return context.Set<PopularConfigs>();
+        }
+
+        public IEnumerable<PopularConfigs> GetOnePopularConfig(int id)
+        {
+            return context.Set<PopularConfigs>().Where(p => p.Id == id);
+        }
+
+        public byte[] GetImagePopularConfig(int id)
+        {
+            var configuration = context.Set<PopularConfigs>().SingleOrDefault(p => p.Id == id);
+            if (configuration == null)
+                return null!;
+            return Convert.FromBase64String(configuration.ImageBase64);
         }
     }
 }
