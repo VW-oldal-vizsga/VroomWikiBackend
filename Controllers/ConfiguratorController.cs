@@ -36,7 +36,7 @@ namespace VroomWiki.Controllers
                     p.ConfigName,
                     p.User_Id,
                     p.Price,
-                    p.ImageBase64
+                    p.ImageUrl
                 }));
             });
         }
@@ -55,18 +55,23 @@ namespace VroomWiki.Controllers
                     p.ConfigName,
                     p.User_Id,
                     p.Price,
-                    p.ImageBase64
+                    p.ImageUrl
                 }));
             });
         }
 
+        
         [HttpGet("image/{id}")]
-        public IActionResult GetImageConfig(int id)
+        public IActionResult GetImage(int id)
         {
-            return this.Run(() =>
+            var imageUrl = configuratorRepository.GetImageConfig(id);
+
+            if (string.IsNullOrEmpty(imageUrl))
             {
-                return File(configuratorRepository.GetImageConfig(id), "image/jpeg");
-            });
+                return NotFound();
+            }
+
+            return Ok(imageUrl);
         }
 
         // POPULAR CONFIGS
