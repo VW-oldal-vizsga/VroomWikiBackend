@@ -23,7 +23,7 @@ namespace VroomWiki.Controllers
         }
         // GET: api/<PastModelsController>
         [HttpGet]
-        public IActionResult GetProducts()
+        public IActionResult GetAllModels()
         {
             return this.Run(() =>
             {
