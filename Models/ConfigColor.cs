@@ -12,7 +12,6 @@ namespace Models
         [Key]
         public required int Id { get; set; }
 
-        [StringLength(20)]
         public string? Name { get; set; }
         public string? ImageBase64 { get; set; }
         public int Price { get; set; }
