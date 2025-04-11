@@ -77,6 +77,7 @@ namespace VroomWiki.Controllers
                 return Ok(new
                 {
                     validTo = DateTime.Parse(this.User.Claims.FirstOrDefault(c => c.Type == "ValidTo")?.Value),
+                    Id = this.User.Claims.FirstOrDefault(c=> c.Type =="UserId")?.Value,
                     Email = this.User.Claims.FirstOrDefault(c => c.Type == "Email")?.Value,
                     Roles = this.User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value),
                     Token = this.User.Claims.FirstOrDefault(c => c.Type == "Token")?.Value,

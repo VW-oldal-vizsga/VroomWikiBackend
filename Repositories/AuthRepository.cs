@@ -76,7 +76,7 @@ namespace VroomWiki.Repositories
             appContext.SaveChanges();
             appContext.Set<UserRoleModel>().Add(new UserRoleModel() { UserId = user.Id, RoleId = 2 });
             appContext.SaveChanges();
-            return Login(new LoginModel() {Username=user.Username, Email = user.Email, Password = user.Password });
+            return Login(new LoginModel() {Username=user.Username, Email = user.Email, Password = user.Password , Id= user.Id});
         }
 
         public void Logout(string? tokenString)
