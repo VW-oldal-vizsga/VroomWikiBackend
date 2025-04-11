@@ -53,7 +53,7 @@ namespace VroomWiki.Repositories
 
             return new
             {
-                
+                Id=user.Id,
                 validTo = session.Entity.LastAccess.AddMinutes(expirationInMinutes),
                 user.Email,
                 Roles = appContext.Set<UserRoleModel>()
