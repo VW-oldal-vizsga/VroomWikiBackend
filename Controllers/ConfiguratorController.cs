@@ -238,7 +238,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult AddConfiguration(dynamic newConfig)
         {
             return this.Run(() =>
@@ -249,7 +249,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpPut("{id}")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult UpdateConfiguration(int id, dynamic configToModify)
         {
             return this.Run(() =>
@@ -259,7 +259,7 @@ namespace VroomWiki.Controllers
         }
 
         [HttpDelete("{id}")]
-       //[Authorize(Roles = "admin")]
+       [Authorize(Roles = "Admin,User")]
         public IActionResult DeleteConfiguration(int id)
         {
             return this.Run(() =>
