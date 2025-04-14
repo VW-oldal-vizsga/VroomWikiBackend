@@ -11,7 +11,7 @@ namespace VroomWiki.Repositories
     public class AuthRepository
     {
         readonly AppDbContext appContext;
-        private double expirationInMinutes = 10;
+        private double expirationInMinutes = 60;
 
         public AuthRepository(AppDbContext appContext, IConfiguration configuration)
         { 
