@@ -16,7 +16,9 @@ namespace Models
         public required string? Name { get; set; }
 
        
-        public string? Description { get; set; }
+        public string? DescriptionHU { get; set; }
+        public string? DescriptionEN { get; set; }
+        public string? DescriptionDE { get; set; }
 
         public string? ImageBase64 { get; set; }
 
@@ -29,7 +31,9 @@ namespace Models
         public  List<string> Assembly { get; set; }
 
         public  string Designer { get; set; }
-        public  string Design { get; set; }
+        public  string DesignHU { get; set; }
+        public  string DesignEN { get; set; }
+        public  string DesignDE { get; set; }
         public  List<string> Production { get; set; }
 
         public bool IsDeleted { get; set; } = false;

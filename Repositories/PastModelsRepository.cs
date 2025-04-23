@@ -46,7 +46,7 @@ namespace VroomWiki.Repositories
             if (pastModel.Id != id)
                 throw new Exception("Model id does not match");
             pastModel.Name = newPastModel.Name;
-            pastModel.Description = newPastModel.Description;
+            pastModel.DescriptionHU = newPastModel.DescriptionHU;
             pastModel.Engine = newPastModel.Engine;
             pastModel.ReleaseDate = newPastModel.ReleaseDate;
             pastModel.Horsepower = newPastModel.Horsepower;
