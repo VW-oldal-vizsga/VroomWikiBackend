@@ -1,0 +1,1340 @@
+{
+	"info": {
+		"_postman_id": "5b462935-2394-4293-801b-d4633f6c0039",
+		"name": "Vroomwiki",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42810292"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body being JSON\r",
+									"pm.test(\"Response is JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 100ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+									"});\r",
+									"\r",
+									"// Test for presence of 'validTo' field in the response body\r",
+									"pm.test(\"Response contains 'validTo' field\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('validTo');\r",
+									"});\r",
+									"\r",
+									"// Test for the type of 'email' field in the response body\r",
+									"pm.test(\"Type of 'email' field is string\", function () {\r",
+									"    pm.expect(pm.response.json().email).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"// Test for the presence and type of 'roles' field in the response body\r",
+									"pm.test(\"Response contains 'roles' field as an array\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('roles').that.is.an('array');\r",
+									"});\r",
+									"\r",
+									"// Test for the presence of 'token' field in the response body\r",
+									"pm.test(\"Response contains 'token' field\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('token');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"nbela007\",\r\n    \"password\": \"bela01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 100ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+									"});\r",
+									"\r",
+									"// Test for response headers\r",
+									"pm.test(\"Verify the presence of required headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"    pm.response.to.have.header(\"Server\");\r",
+									"    pm.response.to.have.header(\"session\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "FH5HK3PDBSMUV7VM5FRU392LD51D03SWUTQXYOSLED6760PZRP0AT8XD9W1HW3JF28GPVPRZ2XSUXMYC",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Test for content type\r",
+									"pm.test(\"Content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"pm.test(\"Response body has validTo, email, roles, and token\", function () {\r",
+									"    const responseBody = pm.response.json();\r",
+									"    pm.expect(responseBody).to.have.property(\"validTo\");\r",
+									"    pm.expect(responseBody).to.have.property(\"email\");\r",
+									"    pm.expect(responseBody).to.have.property(\"roles\");\r",
+									"    pm.expect(responseBody).to.have.property(\"token\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"sfdbb\",\r\n    \"password\":\"jozsiafanatikus\",\r\n    \"email\":\"kisjozsi222@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/registration",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckLogin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "5933JI0Q2K4R4W7268N5N8RVIUW5DDR3JLCT9TKQDFS4EXVEE818HDCCODYUR4IGBXZPD0VEKJU61A03",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PastModels",
+			"item": [
+				{
+					"name": "PastModels",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has 'name' field\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"name\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 100ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has 'isDeleted' field\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"isDeleted\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "1GZ7WWR8DXTRYZ7ZA8FOZF1L7NVWKDPBW6B77YPTTT5GN0FZOZU4NEU7QC1YFMFIK6WRJJTDLN4K2XLB",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":0,\r\n    \"name\": \"Volkswagen aasaqaqqqqq\",\r\n    \"description\": \"asdasdas\",\r\n    \"releaseDate\": 2019,\r\n    \"engine\": null,\r\n    \"horsepower\": \"105-200 lóerő\",\r\n    \"imageBase64\": \"\",\r\n    \"assembly\":[\"Szlovákia\",\"Mémetország\"],\r\n    \"design\":\"Klaus\",\r\n    \"production\":[\"2019-1201\"],\r\n    \"designer\":\"ASDASDAsda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/PastModels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"PastModels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PastModels",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+									"});\r",
+									"\r",
+									"// Test for content type header\r",
+									"pm.test(\"Content-Type is present and is application/json\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/PastModels/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"PastModels",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PastModels",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 100ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+									"});\r",
+									"\r",
+									"// Test for presence of headers\r",
+									"pm.test(\"Verify the presence of headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"    pm.response.to.have.header(\"Server\");\r",
+									"    pm.response.to.have.header(\"session\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "9CUPNC3PY3RQEL17BZRU2HD8P80MMSDALUSXWQ9QMJFBTJTA0Z94ZOV0ACYG1SX4VUFRP10FUVELENEK",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/PastModels/14",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"PastModels",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PastModelsPUT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"pm.test(\"Response body has the expected properties\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('name');\r",
+									"    pm.expect(pm.response.json()).to.have.property('description');\r",
+									"    pm.expect(pm.response.json()).to.have.property('imageBase64');\r",
+									"    pm.expect(pm.response.json()).to.have.property('engine');\r",
+									"    pm.expect(pm.response.json()).to.have.property('horsepower');\r",
+									"    pm.expect(pm.response.json()).to.have.property('releaseDate');\r",
+									"    pm.expect(pm.response.json()).to.have.property('isDeleted');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "FP5L3OL8FYHFN0V8PFTFUEPA9RN4U7IPUKYTJSVBGKDQ7L1JPAHIYRO0PLAEELRIQMC6W380NW1SQQVI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Volkswagen BabosAHabos12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/PastModels/16",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"PastModels",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETImg",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/PastModels/image/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"PastModels",
+								"image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MainPage_Sales",
+			"item": [
+				{
+					"name": "GETMainpage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"// Test for the structure of the response body\r",
+									"pm.test(\"Response body has the correct structure\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').that.is.not.empty;\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('descriptionEN');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('descriptionHU');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('descriptionDU');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('owner');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('employees');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('factories');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('chairman');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('founded');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('headquarters');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('products');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('profit');\r",
+									"    pm.expect(pm.response.json()[0]).to.have.property('imageBase64');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MainPage_sales/mainpage",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MainPage_sales",
+								"mainpage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETMainpageImg",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MainPage_sales/image/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MainPage_sales",
+								"image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETMainpageHistory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body type\r",
+									"pm.test(\"Response body is an array\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"pm.test(\"Response body has required properties\", function () {\r",
+									"    const responseBody = pm.response.json();\r",
+									"    responseBody.forEach(item => {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('title');\r",
+									"        pm.expect(item).to.have.property('history');\r",
+									"        pm.expect(item).to.have.property('history2');\r",
+									"        pm.expect(item).to.have.property('history3');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MainPage_sales/mainpage/history",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MainPage_sales",
+								"mainpage",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETSales",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"pm.test(\"Response body has valid properties\", function () {\r",
+									"    pm.response.json().forEach(item => {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('year');\r",
+									"        pm.expect(item).to.have.property('totalSale');\r",
+									"        pm.expect(item).to.have.property('totalIncome');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MainPage_sales/sales",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MainPage_sales",
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddSale",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"pm.test(\"Response has the required properties\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('year');\r",
+									"    pm.expect(pm.response.json()).to.have.property('totalSale');\r",
+									"    pm.expect(pm.response.json()).to.have.property('totalIncome');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "1GZ7WWR8DXTRYZ7ZA8FOZF1L7NVWKDPBW6B77YPTTT5GN0FZOZU4NEU7QC1YFMFIK6WRJJTDLN4K2XLB",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 0,\r\n    \"year\": 2010,\r\n    \"totalSale\": 10.45,\r\n    \"totalIncome\": 202.21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/MainPage_sales/sales",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MainPage_sales",
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DelSale",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 100ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+									"});\r",
+									"\r",
+									"// Test for response headers\r",
+									"pm.test(\"Response should have Content-Length header\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should have Date header\", function () {\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should have Server header\", function () {\r",
+									"    pm.response.to.have.header(\"Server\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MainPage_sales/sales/12",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MainPage_sales",
+								"sales",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Configurator",
+			"item": [
+				{
+					"name": "Configs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body schema/properties\r",
+									"pm.test(\"Each item has required properties\", function () {\r",
+									"    pm.response.json().forEach((item) => {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('color_Id');\r",
+									"        pm.expect(item).to.have.property('engine_Id');\r",
+									"        pm.expect(item).to.have.property('transmissionType_Id');\r",
+									"        pm.expect(item).to.have.property('configName');\r",
+									"        pm.expect(item).to.have.property('user_Id');\r",
+									"        pm.expect(item).to.have.property('price');\r",
+									"        pm.expect(item).to.have.property('imageBase64');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// Test for content type header\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddConfig",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for content type\r",
+									"pm.test(\"Content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Test for specific fields in the response body\r",
+									"pm.test(\"Response body has the expected fields\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"id\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"configName\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"user_Id\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"engine_Id\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"color_Id\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"transmissionType_Id\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"price\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"imageUrl\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 0,\r\n    \"User_Id\": 3,\r\n    \"ConfigName\": \"Start2\",\r\n    \"Engine_Id\": 1,\r\n    \"Color_Id\": 6,\r\n    \"TransmissionType_Id\": 1,\r\n    \"price\": 10422200,\r\n    \"imageUrl\": \"https://cdn.nwi-ms.com/media/hu/V/mc/DA13BXTH/model/trim.jpg?F=5K5K&P=BD&size=XL&background=transparent\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Configurator",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DelConfig",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 100ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+									"});\r",
+									"\r",
+									"// Test for response headers\r",
+									"pm.test(\"Response should have headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"    pm.response.to.have.header(\"Server\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUTConfig",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Basic test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Basic test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Basic test for response body properties\r",
+									"pm.test(\"Response body should have valid properties\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('color_Id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('engine_Id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('transmissionType_Id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('configName');\r",
+									"    pm.expect(pm.response.json()).to.have.property('user_Id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('price');\r",
+									"    pm.expect(pm.response.json()).to.have.property('imageBase64');\r",
+									"});\r",
+									"\r",
+									"// Basic test for response headers\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 9,\r\n        \"color_Id\": 5,\r\n        \"engine_Id\": 1,\r\n        \"transmissionType_Id\": 1,\r\n        \"configName\": \"Akarooom\",\r\n        \"user_Id\": 2,\r\n        \"price\": 1000000,\r\n        \"imageBase64\": \"\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETColors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"var jsonData = pm.response.json(); // Updated to reference the correct variable for the response body\r",
+									"pm.test(\"Response body has id, name, price, and imageBase64 for each color\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('array');\r",
+									"    jsonData.forEach(function(color) {\r",
+									"        pm.expect(color).to.have.property('id');\r",
+									"        pm.expect(color).to.have.property('name');\r",
+									"        pm.expect(color).to.have.property('price');\r",
+									"        pm.expect(color).to.have.property('imageBase64');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/colors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"colors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETEngines",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body should be valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/engines",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"engines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETTransmissions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"pm.test(\"Response body should be valid\", function () {\r",
+									"    pm.response.to.be.ok;\r",
+									"    pm.response.to.have.jsonBody();\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/transmissions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"transmissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETConfigImg",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/image/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"image",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETColorImg",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Configurator/color/image/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Configurator",
+								"color",
+								"image",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5269/api",
+			"type": "string"
+		}
+	]
+}
